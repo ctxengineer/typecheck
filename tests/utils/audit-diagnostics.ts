@@ -1,4 +1,5 @@
 import {
+  TYPESCRIPT_DIAGNOSTIC_CORPUS_VERSION,
   auditDiagnosticTemplate,
   loadDiagnosticTemplates,
 } from "./diagnostic-corpus.ts";
@@ -11,6 +12,7 @@ const fallback = audits.filter((audit) => audit.kind === "fallback");
 console.log(
   JSON.stringify(
     {
+      typescript: TYPESCRIPT_DIAGNOSTIC_CORPUS_VERSION,
       total: audits.length,
       compact: compact.length,
       fallback: fallback.length,
@@ -27,4 +29,3 @@ console.log(
     2
   )
 );
-

@@ -1,5 +1,8 @@
 import { compressMessage } from "../../src/lib/compressor.ts";
 
+export const TYPESCRIPT_DIAGNOSTIC_CORPUS_VERSION = "6.0";
+export const TYPESCRIPT_DIAGNOSTIC_CORPUS_SIZE = 2130;
+
 export interface DiagnosticTemplate {
   code: string;
   body: string;
@@ -47,4 +50,3 @@ export function auditDiagnosticTemplate(
     kind: output === fallback ? "fallback" : "compact",
   };
 }
-

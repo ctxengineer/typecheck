@@ -1,4 +1,3 @@
-
 TS1002: Unterminated string literal.
 TS1003: Identifier expected.
 TS1005: '{0}' expected.
@@ -40,7 +39,7 @@ TS1051: A 'set' accessor cannot have an optional parameter.
 TS1052: A 'set' accessor parameter cannot have an initializer.
 TS1053: A 'set' accessor cannot have rest parameter.
 TS1054: A 'get' accessor cannot have parameters.
-TS1055: Type '{0}' is not a valid async function return type in ES5/ES3 because it does not refer to a Promise-compatible constructor value.
+TS1055: Type '{0}' is not a valid async function return type in ES5 because it does not refer to a Promise-compatible constructor value.
 TS1056: Accessors are only available when targeting ECMAScript 5 and higher.
 TS1058: The return type of an async function must either be a valid promise or must not contain a callable 'then' member.
 TS1059: A promise must have a 'then' method.
@@ -49,6 +48,7 @@ TS1061: Enum member must have initializer.
 TS1062: Type is referenced directly or indirectly in the fulfillment callback of its own 'then' method.
 TS1063: An export assignment cannot be used in a namespace.
 TS1064: The return type of an async function or method must be the global Promise<T> type. Did you mean to write 'Promise<{0}>'?
+TS1065: The return type of an async function or method must be the global Promise<T> type.
 TS1066: In ambient enum declarations member initializer must be constant expression.
 TS1068: Unexpected token. A constructor, method, accessor, or property was expected.
 TS1069: Unexpected token. A type parameter name was expected without curly braces.
@@ -56,7 +56,6 @@ TS1070: '{0}' modifier cannot appear on a type member.
 TS1071: '{0}' modifier cannot appear on an index signature.
 TS1079: A '{0}' modifier cannot be used with an import declaration.
 TS1084: Invalid 'reference' directive syntax.
-TS1085: Octal literals are not available when targeting ECMAScript 5 and higher. Use the syntax '{0}'.
 TS1089: '{0}' modifier cannot appear on a constructor declaration.
 TS1090: '{0}' modifier cannot appear on a parameter.
 TS1091: Only a single variable declaration is allowed in a 'for...in' statement.
@@ -79,6 +78,7 @@ TS1107: Jump target cannot cross function boundary.
 TS1108: A 'return' statement can only be used within a function body.
 TS1109: Expression expected.
 TS1110: Type expected.
+TS1111: Private field '{0}' must be declared in an enclosing class.
 TS1113: A 'default' clause cannot appear more than once in a 'switch' statement.
 TS1114: Duplicate label '{0}'.
 TS1115: A 'continue' statement can only jump to a label of an enclosing iteration statement.
@@ -87,7 +87,7 @@ TS1117: An object literal cannot have multiple properties with the same name.
 TS1118: An object literal cannot have multiple get/set accessors with the same name.
 TS1119: An object literal cannot have property and accessor with the same name.
 TS1120: An export assignment cannot have modifiers.
-TS1121: Octal literals are not allowed in strict mode.
+TS1121: Octal literals are not allowed. Use the syntax '{0}'.
 TS1123: Variable declaration list cannot be empty.
 TS1124: Digit expected.
 TS1125: Hexadecimal digit expected.
@@ -108,13 +108,13 @@ TS1140: Type argument expected.
 TS1141: String literal expected.
 TS1142: Line break not permitted here.
 TS1144: '{' or ';' expected.
+TS1145: '{' or JSX element expected.
 TS1146: Declaration expected.
 TS1147: Import declarations in a namespace cannot reference a module.
 TS1148: Cannot use imports, exports, or module augmentations when '--module' is 'none'.
 TS1149: File name '{0}' differs from already included file name '{1}' only in casing.
-TS1155: 'const' declarations must be initialized.
-TS1156: 'const' declarations can only be declared inside a block.
-TS1157: 'let' declarations can only be declared inside a block.
+TS1155: '{0}' declarations must be initialized.
+TS1156: '{0}' declarations can only be declared inside a block.
 TS1160: Unterminated template literal.
 TS1161: Unterminated regular expression literal.
 TS1162: An object member cannot be declared optional.
@@ -157,10 +157,10 @@ TS1199: Unterminated Unicode escape sequence.
 TS1200: Line terminator not permitted before arrow.
 TS1202: Import assignment cannot be used when targeting ECMAScript modules. Consider using 'import * as ns from "mod"', 'import {a} from "mod"', 'import d from "mod"', or another module format instead.
 TS1203: Export assignment cannot be used when targeting ECMAScript modules. Consider using 'export default' or another module format instead.
-TS1205: Re-exporting a type when the '--isolatedModules' flag is provided requires using 'export type'.
+TS1205: Re-exporting a type when '{0}' is enabled requires using 'export type'.
 TS1206: Decorators are not valid here.
 TS1207: Decorators cannot be applied to multiple get/set accessors of the same name.
-TS1208: '{0}' cannot be compiled under '--isolatedModules' because it is considered a global script file. Add an import, export, or an empty 'export {}' statement to make it a module.
+TS1209: Invalid optional chain from new expression. Did you mean to call '{0}()'?
 TS1210: Code contained in a class is evaluated in JavaScript's strict mode which does not allow this use of '{0}'. For more information, see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode.
 TS1211: A class declaration without the 'default' modifier must have a name.
 TS1212: Identifier expected. '{0}' is a reserved word in strict mode.
@@ -169,7 +169,6 @@ TS1214: Identifier expected. '{0}' is a reserved word in strict mode. Modules ar
 TS1215: Invalid use of '{0}'. Modules are automatically in strict mode.
 TS1216: Identifier expected. '__esModule' is reserved as an exported marker when transforming ECMAScript modules.
 TS1218: Export assignment is not supported when '--module' flag is 'system'.
-TS1219: Experimental support for decorators is a feature that is subject to change in a future release. Set the 'experimentalDecorators' option in your 'tsconfig' or 'jsconfig' to remove this warning.
 TS1221: Generators are not allowed in an ambient context.
 TS1222: An overload signature cannot be declared as a generator.
 TS1223: '{0}' tag already specified.
@@ -199,9 +198,10 @@ TS1246: An interface property cannot have an initializer.
 TS1247: A type literal property cannot have an initializer.
 TS1248: A class member cannot have the '{0}' keyword.
 TS1249: A decorator can only decorate a method implementation, not an overload.
-TS1250: Function declarations are not allowed inside blocks in strict mode when targeting 'ES3' or 'ES5'.
-TS1251: Function declarations are not allowed inside blocks in strict mode when targeting 'ES3' or 'ES5'. Class definitions are automatically in strict mode.
-TS1252: Function declarations are not allowed inside blocks in strict mode when targeting 'ES3' or 'ES5'. Modules are automatically in strict mode.
+TS1250: Function declarations are not allowed inside blocks in strict mode when targeting 'ES5'.
+TS1251: Function declarations are not allowed inside blocks in strict mode when targeting 'ES5'. Class definitions are automatically in strict mode.
+TS1252: Function declarations are not allowed inside blocks in strict mode when targeting 'ES5'. Modules are automatically in strict mode.
+TS1253: Abstract properties can only appear within an abstract class.
 TS1254: A 'const' initializer in an ambient context must be a string or numeric literal or literal enum reference.
 TS1255: A definite assignment assertion '!' is not permitted in this context.
 TS1257: A required element cannot follow an optional element.
@@ -216,12 +216,33 @@ TS1265: A rest element cannot follow another rest element.
 TS1266: An optional element cannot follow a rest element.
 TS1267: Property '{0}' cannot have an initializer because it is marked abstract.
 TS1268: An index signature parameter type must be 'string', 'number', 'symbol', or a template literal type.
-TS1269: Cannot use 'export import' on a type or type-only namespace when the '--isolatedModules' flag is provided.
+TS1269: Cannot use 'export import' on a type or type-only namespace when '{0}' is enabled.
 TS1270: Decorator function return type '{0}' is not assignable to type '{1}'.
 TS1271: Decorator function return type is '{0}' but is expected to be 'void' or 'any'.
 TS1272: A type referenced in a decorated signature must be imported with 'import type' or a namespace import when 'isolatedModules' and 'emitDecoratorMetadata' are enabled.
 TS1273: '{0}' modifier cannot appear on a type parameter
 TS1274: '{0}' modifier can only appear on a type parameter of a class, interface or type alias
+TS1275: 'accessor' modifier can only appear on a property declaration.
+TS1276: An 'accessor' property cannot be declared optional.
+TS1277: '{0}' modifier can only appear on a type parameter of a function, method or class
+TS1278: The runtime will invoke the decorator with {1} arguments, but the decorator expects {0}.
+TS1279: The runtime will invoke the decorator with {1} arguments, but the decorator expects at least {0}.
+TS1280: Namespaces are not allowed in global script files when '{0}' is enabled. If this file is not intended to be a global script, set 'moduleDetection' to 'force' or add an empty 'export {}' statement.
+TS1281: Cannot access '{0}' from another file without qualification when '{1}' is enabled. Use '{2}' instead.
+TS1282: An 'export =' declaration must reference a value when 'verbatimModuleSyntax' is enabled, but '{0}' only refers to a type.
+TS1283: An 'export =' declaration must reference a real value when 'verbatimModuleSyntax' is enabled, but '{0}' resolves to a type-only declaration.
+TS1284: An 'export default' must reference a value when 'verbatimModuleSyntax' is enabled, but '{0}' only refers to a type.
+TS1285: An 'export default' must reference a real value when 'verbatimModuleSyntax' is enabled, but '{0}' resolves to a type-only declaration.
+TS1286: ECMAScript imports and exports cannot be written in a CommonJS file under 'verbatimModuleSyntax'.
+TS1287: A top-level 'export' modifier cannot be used on value declarations in a CommonJS module when 'verbatimModuleSyntax' is enabled.
+TS1288: An import alias cannot resolve to a type or type-only declaration when 'verbatimModuleSyntax' is enabled.
+TS1289: '{0}' resolves to a type-only declaration and must be marked type-only in this file before re-exporting when '{1}' is enabled. Consider using 'import type' where '{0}' is imported.
+TS1290: '{0}' resolves to a type-only declaration and must be marked type-only in this file before re-exporting when '{1}' is enabled. Consider using 'export type { {0} as default }'.
+TS1291: '{0}' resolves to a type and must be marked type-only in this file before re-exporting when '{1}' is enabled. Consider using 'import type' where '{0}' is imported.
+TS1292: '{0}' resolves to a type and must be marked type-only in this file before re-exporting when '{1}' is enabled. Consider using 'export type { {0} as default }'.
+TS1293: ECMAScript module syntax is not allowed in a CommonJS module when 'module' is set to 'preserve'.
+TS1294: This syntax is not allowed when 'erasableSyntaxOnly' is enabled.
+TS1295: ECMAScript imports and exports cannot be written in a CommonJS file under 'verbatimModuleSyntax'. Adjust the 'type' field in the nearest 'package.json' to make this file an ECMAScript module, or adjust your 'verbatimModuleSyntax', 'module', and 'moduleResolution' settings in TypeScript.
 TS1300: 'with' statements are not allowed in an async function block.
 TS1308: 'await' expressions are only allowed within async functions and at the top levels of modules.
 TS1309: The current file is a CommonJS module and cannot use 'await' at the top level.
@@ -236,8 +257,8 @@ TS1319: A default export can only be used in an ECMAScript-style module.
 TS1320: Type of 'await' operand must either be a valid promise or must not contain a callable 'then' member.
 TS1321: Type of 'yield' operand in an async generator must either be a valid promise or must not contain a callable 'then' member.
 TS1322: Type of iterated elements of a 'yield*' operand must either be a valid promise or must not contain a callable 'then' member.
-TS1323: Dynamic imports are only supported when the '--module' flag is set to 'es2020', 'es2022', 'esnext', 'commonjs', 'amd', 'system', 'umd', 'node16', or 'nodenext'.
-TS1324: Dynamic imports only support a second argument when the '--module' option is set to 'esnext', 'node16', or 'nodenext'.
+TS1323: Dynamic imports are only supported when the '--module' flag is set to 'es2020', 'es2022', 'esnext', 'commonjs', 'amd', 'system', 'umd', 'node16', 'node18', 'node20', or 'nodenext'.
+TS1324: Dynamic imports only support a second argument when the '--module' option is set to 'esnext', 'node16', 'node18', 'node20', 'nodenext', or 'preserve'.
 TS1325: Argument of dynamic import cannot be spread element.
 TS1326: This use of 'import' is invalid. 'import()' calls can be written, but they must have parentheses and cannot have type arguments.
 TS1327: String literal with double quotes expected.
@@ -253,8 +274,8 @@ TS1337: An index signature parameter type cannot be a literal type or generic ty
 TS1338: 'infer' declarations are only permitted in the 'extends' clause of a conditional type.
 TS1339: Module '{0}' does not refer to a value, but is used as a value here.
 TS1340: Module '{0}' does not refer to a type, but is used as a type here. Did you mean 'typeof import('{0}')'?
-TS1342: Type arguments cannot be used here.
-TS1343: The 'import.meta' meta-property is only allowed when the '--module' option is 'es2020', 'es2022', 'esnext', 'system', 'node16', or 'nodenext'.
+TS1341: Class constructor may not be an accessor.
+TS1343: The 'import.meta' meta-property is only allowed when the '--module' option is 'es2020', 'es2022', 'esnext', 'system', 'node16', 'node18', 'node20', or 'nodenext'.
 TS1344: 'A label is not allowed here.
 TS1345: An expression of type 'void' cannot be tested for truthiness.
 TS1346: This parameter is not allowed with 'use strict' directive.
@@ -266,11 +287,12 @@ TS1351: An identifier or keyword cannot immediately follow a numeric literal.
 TS1352: A bigint literal cannot use exponential notation.
 TS1353: A bigint literal must be an integer.
 TS1354: 'readonly' type modifier is only permitted on array and tuple literal types.
-TS1355: A 'const' assertions can only be applied to references to enum members, or string, number, boolean, array, or object literals.
+TS1355: A 'const' assertion can only be applied to references to enum members, or string, number, boolean, array, or object literals.
 TS1356: Did you mean to mark this function as 'async'?
 TS1357: An enum member name must be followed by a ',', '=', or '}'.
 TS1358: Tagged template expressions are not permitted in an optional chain.
 TS1359: Identifier expected. '{0}' is a reserved word that cannot be used here.
+TS1360: Type '{0}' does not satisfy the expected type '{1}'.
 TS1361: '{0}' cannot be used as a value because it was imported using 'import type'.
 TS1362: '{0}' cannot be used as a value because it was exported using 'export type'.
 TS1363: A type-only import can specify a default import or named bindings, but not both.
@@ -278,19 +300,16 @@ TS1364: Convert to type-only export
 TS1365: Convert all re-exported types to type-only exports
 TS1366: Split into two separate import declarations
 TS1367: Split all invalid type-only imports
+TS1368: Class constructor may not be a generator.
 TS1369: Did you mean '{0}'?
-TS1371: This import is never used as a value and must use 'import type' because 'importsNotUsedAsValues' is set to 'error'.
-TS1373: Convert to type-only import
-TS1374: Convert all imports not used as a value to type-only imports
 TS1375: 'await' expressions are only allowed at the top level of a file when that file is a module, but this file has no imports or exports. Consider adding an empty 'export {}' to make this file a module.
 TS1376: '{0}' was imported here.
 TS1377: '{0}' was exported here.
-TS1378: Top-level 'await' expressions are only allowed when the 'module' option is set to 'es2022', 'esnext', 'system', 'node16', or 'nodenext', and the 'target' option is set to 'es2017' or higher.
+TS1378: Top-level 'await' expressions are only allowed when the 'module' option is set to 'es2022', 'esnext', 'system', 'node16', 'node18', 'node20', 'nodenext', or 'preserve', and the 'target' option is set to 'es2017' or higher.
 TS1379: An import alias cannot reference a declaration that was exported using 'export type'.
 TS1380: An import alias cannot reference a declaration that was imported using 'import type'.
 TS1381: Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
 TS1382: Unexpected token. Did you mean `{'>'}` or `&gt;`?
-TS1383: Only named exports may use 'export type'.
 TS1385: Function type notation must be parenthesized when used in a union type.
 TS1386: Constructor type notation must be parenthesized when used in a union type.
 TS1387: Function type notation must be parenthesized when used in an intersection type.
@@ -337,8 +356,8 @@ TS1428: File is output of project reference source '{0}'
 TS1429: File redirects to file '{0}'
 TS1430: The file is in the program because:
 TS1431: 'for await' loops are only allowed at the top level of a file when that file is a module, but this file has no imports or exports. Consider adding an empty 'export {}' to make this file a module.
-TS1432: Top-level 'for await' loops are only allowed when the 'module' option is set to 'es2022', 'esnext', 'system', 'node16', or 'nodenext', and the 'target' option is set to 'es2017' or higher.
-TS1433: Decorators may not be applied to 'this' parameters.
+TS1432: Top-level 'for await' loops are only allowed when the 'module' option is set to 'es2022', 'esnext', 'system', 'node16', 'node18', 'node20', 'nodenext', or 'preserve', and the 'target' option is set to 'es2017' or higher.
+TS1433: Neither decorators nor modifiers may be applied to 'this' parameters.
 TS1434: Unexpected keyword or identifier.
 TS1435: Unknown keyword or identifier. Did you mean '{0}'?
 TS1436: Decorators must precede the name and all keywords of property declarations.
@@ -349,24 +368,101 @@ TS1440: Variable declaration not allowed at this location.
 TS1441: Cannot start a function call in a type annotation.
 TS1442: Expected '=' for property initializer.
 TS1443: Module declaration names may only use ' or " quoted strings.
-TS1444: '{0}' is a type and must be imported using a type-only import when 'preserveValueImports' and 'isolatedModules' are both enabled.
-TS1446: '{0}' resolves to a type-only declaration and must be imported using a type-only import when 'preserveValueImports' and 'isolatedModules' are both enabled.
-TS1448: '{0}' resolves to a type-only declaration and must be re-exported using a type-only re-export when 'isolatedModules' is enabled.
+TS1448: '{0}' resolves to a type-only declaration and must be re-exported using a type-only re-export when '{1}' is enabled.
 TS1449: Preserve unused imported values in the JavaScript output that would otherwise be removed.
-TS1450: Dynamic imports can only accept a module specifier and an optional assertion as arguments
+TS1450: Dynamic imports can only accept a module specifier and an optional set of attributes as arguments
 TS1451: Private identifiers are only allowed in class bodies and may only be used as part of a class member declaration, property access, or on the left-hand-side of an 'in' expression
-TS1452: 'resolution-mode' assertions are only supported when `moduleResolution` is `node16` or `nodenext`.
 TS1453: `resolution-mode` should be either `require` or `import`.
 TS1454: `resolution-mode` can only be set for type-only imports.
 TS1455: `resolution-mode` is the only valid key for type import assertions.
 TS1456: Type import assertions should have exactly one key - `resolution-mode` - with value `import` or `require`.
+TS1457: Matched by default include pattern '**/*'
+TS1458: File is ECMAScript module because '{0}' has field "type" with value "module"
+TS1459: File is CommonJS module because '{0}' has field "type" whose value is not "module"
+TS1460: File is CommonJS module because '{0}' does not have field "type"
+TS1461: File is CommonJS module because 'package.json' was not found
+TS1463: 'resolution-mode' is the only valid key for type import attributes.
+TS1464: Type import attributes should have exactly one key - 'resolution-mode' - with value 'import' or 'require'.
 TS1470: The 'import.meta' meta-property is not allowed in files which will build into CommonJS output.
-TS1471: Module '{0}' cannot be imported using this construct. The specifier only resolves to an ES module, which cannot be imported synchronously. Use dynamic import instead.
+TS1471: Module '{0}' cannot be imported using this construct. The specifier only resolves to an ES module, which cannot be imported with 'require'. Use an ECMAScript import instead.
 TS1472: 'catch' or 'finally' expected.
 TS1473: An import declaration can only be used at the top level of a module.
 TS1474: An export declaration can only be used at the top level of a module.
 TS1475: Control what method is used to detect module-format JS files.
 TS1476: "auto": Treat files with imports, exports, import.meta, jsx (with jsx: react-jsx), or esm format (with module: node16+) as modules.
+TS1477: An instantiation expression cannot be followed by a property access.
+TS1478: Identifier or string literal expected.
+TS1479: The current file is a CommonJS module whose imports will produce 'require' calls; however, the referenced file is an ECMAScript module and cannot be imported with 'require'. Consider writing a dynamic 'import("{0}")' call instead.
+TS1480: To convert this file to an ECMAScript module, change its file extension to '{0}' or create a local package.json file with `{ "type": "module" }`.
+TS1481: To convert this file to an ECMAScript module, change its file extension to '{0}', or add the field `"type": "module"` to '{1}'.
+TS1482: To convert this file to an ECMAScript module, add the field `"type": "module"` to '{0}'.
+TS1483: To convert this file to an ECMAScript module, create a local package.json file with `{ "type": "module" }`.
+TS1484: '{0}' is a type and must be imported using a type-only import when 'verbatimModuleSyntax' is enabled.
+TS1485: '{0}' resolves to a type-only declaration and must be imported using a type-only import when 'verbatimModuleSyntax' is enabled.
+TS1486: Decorator used before 'export' here.
+TS1487: Octal escape sequences are not allowed. Use the syntax '{0}'.
+TS1488: Escape sequence '{0}' is not allowed.
+TS1489: Decimals with leading zeros are not allowed.
+TS1490: File appears to be binary.
+TS1491: '{0}' modifier cannot appear on a 'using' declaration.
+TS1492: '{0}' declarations may not have binding patterns.
+TS1493: The left-hand side of a 'for...in' statement cannot be a 'using' declaration.
+TS1494: The left-hand side of a 'for...in' statement cannot be an 'await using' declaration.
+TS1495: '{0}' modifier cannot appear on an 'await using' declaration.
+TS1496: Identifier, string literal, or number literal expected.
+TS1497: Expression must be enclosed in parentheses to be used as a decorator.
+TS1498: Invalid syntax in decorator.
+TS1499: Unknown regular expression flag.
+TS1500: Duplicate regular expression flag.
+TS1501: This regular expression flag is only available when targeting '{0}' or later.
+TS1502: The Unicode (u) flag and the Unicode Sets (v) flag cannot be set simultaneously.
+TS1503: Named capturing groups are only available when targeting 'ES2018' or later.
+TS1504: Subpattern flags must be present when there is a minus sign.
+TS1505: Incomplete quantifier. Digit expected.
+TS1506: Numbers out of order in quantifier.
+TS1507: There is nothing available for repetition.
+TS1508: Unexpected '{0}'. Did you mean to escape it with backslash?
+TS1509: This regular expression flag cannot be toggled within a subpattern.
+TS1510: '\k' must be followed by a capturing group name enclosed in angle brackets.
+TS1511: '\q' is only available inside character class.
+TS1512: '\c' must be followed by an ASCII letter.
+TS1513: Undetermined character escape.
+TS1514: Expected a capturing group name.
+TS1515: Named capturing groups with the same name must be mutually exclusive to each other.
+TS1516: A character class range must not be bounded by another character class.
+TS1517: Range out of order in character class.
+TS1518: Anything that would possibly match more than a single character is invalid inside a negated character class.
+TS1519: Operators must not be mixed within a character class. Wrap it in a nested class instead.
+TS1520: Expected a class set operand.
+TS1521: '\q' must be followed by string alternatives enclosed in braces.
+TS1522: A character class must not contain a reserved double punctuator. Did you mean to escape it with backslash?
+TS1523: Expected a Unicode property name.
+TS1524: Unknown Unicode property name.
+TS1525: Expected a Unicode property value.
+TS1526: Unknown Unicode property value.
+TS1527: Expected a Unicode property name or value.
+TS1528: Any Unicode property that would possibly match more than a single character is only available when the Unicode Sets (v) flag is set.
+TS1529: Unknown Unicode property name or value.
+TS1530: Unicode property value expressions are only available when the Unicode (u) flag or the Unicode Sets (v) flag is set.
+TS1531: '\{0}' must be followed by a Unicode property value expression enclosed in braces.
+TS1532: There is no capturing group named '{0}' in this regular expression.
+TS1533: This backreference refers to a group that does not exist. There are only {0} capturing groups in this regular expression.
+TS1534: This backreference refers to a group that does not exist. There are no capturing groups in this regular expression.
+TS1535: This character cannot be escaped in a regular expression.
+TS1536: Octal escape sequences and backreferences are not allowed in a character class. If this was intended as an escape sequence, use the syntax '{0}' instead.
+TS1537: Decimal escape sequences and backreferences are not allowed in a character class.
+TS1538: Unicode escape sequences are only available when the Unicode (u) flag or the Unicode Sets (v) flag is set.
+TS1539: A 'bigint' literal cannot be used as a property name.
+TS1540: A 'namespace' declaration should not be declared using the 'module' keyword. Please use the 'namespace' keyword instead.
+TS1541: Type-only import of an ECMAScript module from a CommonJS module must have a 'resolution-mode' attribute.
+TS1542: Type import of an ECMAScript module from a CommonJS module must have a 'resolution-mode' attribute.
+TS1543: Importing a JSON file into an ECMAScript module requires a 'type: "json"' import attribute when 'module' is set to '{0}'.
+TS1544: Named imports from a JSON file into an ECMAScript module are not allowed when 'module' is set to '{0}'.
+TS1545: 'using' declarations are not allowed in ambient contexts.
+TS1546: 'await using' declarations are not allowed in ambient contexts.
+TS1547: 'using' declarations are not allowed in 'case' or 'default' clauses unless contained within a block.
+TS1548: 'await using' declarations are not allowed in 'case' or 'default' clauses unless contained within a block.
+TS1549: Ignore the tsconfig found and build with commandline options and files.
 TS2200: The types of '{0}' are incompatible between these types.
 TS2201: The types returned by '{0}' are incompatible between these types.
 TS2202: Call signature return types '{0}' and '{1}' are incompatible.
@@ -375,8 +471,11 @@ TS2204: Call signatures with no arguments have incompatible return types '{0}' a
 TS2205: Construct signatures with no arguments have incompatible return types '{0}' and '{1}'.
 TS2206: The 'type' modifier cannot be used on a named import when 'import type' is used on its import statement.
 TS2207: The 'type' modifier cannot be used on a named export when 'export type' is used on its export statement.
+TS2208: This type parameter might need an `extends {0}` constraint.
 TS2209: The project root is ambiguous, but is required to resolve export map entry '{0}' in file '{1}'. Supply the `rootDir` compiler option to disambiguate.
 TS2210: The project root is ambiguous, but is required to resolve import map entry '{0}' in file '{1}'. Supply the `rootDir` compiler option to disambiguate.
+TS2211: Add `extends` constraint.
+TS2212: Add `extends` constraint to all type parameters
 TS2300: Duplicate identifier '{0}'.
 TS2301: Initializer of instance member variable '{0}' cannot reference identifier '{1}' declared in the constructor.
 TS2302: Static members cannot reference class type parameters.
@@ -410,7 +509,6 @@ TS2329: Index signature for type '{0}' is missing in type '{1}'.
 TS2330: '{0}' and '{1}' index signatures are incompatible.
 TS2331: 'this' cannot be referenced in a module or namespace body.
 TS2332: 'this' cannot be referenced in current location.
-TS2333: 'this' cannot be referenced in constructor arguments.
 TS2334: 'this' cannot be referenced in a static property initializer.
 TS2335: 'super' can only be referenced in a derived class.
 TS2336: 'super' cannot be referenced in constructor arguments.
@@ -431,19 +529,17 @@ TS2351: This expression is not constructable.
 TS2352: Conversion of type '{0}' to type '{1}' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
 TS2353: Object literal may only specify known properties, and '{0}' does not exist in type '{1}'.
 TS2354: This syntax requires an imported helper but module '{0}' cannot be found.
-TS2355: A function whose declared type is neither 'void' nor 'any' must return a value.
+TS2355: A function whose declared type is neither 'undefined', 'void', nor 'any' must return a value.
 TS2356: An arithmetic operand must be of type 'any', 'number', 'bigint' or an enum type.
 TS2357: The operand of an increment or decrement operator must be a variable or a property access.
 TS2358: The left-hand side of an 'instanceof' expression must be of type 'any', an object type or a type parameter.
-TS2359: The right-hand side of an 'instanceof' expression must be of type 'any' or of a type assignable to the 'Function' interface type.
-TS2360: The left-hand side of an 'in' expression must be a private identifier or of type 'any', 'string', 'number', or 'symbol'.
-TS2361: The right-hand side of an 'in' expression must not be a primitive.
+TS2359: The right-hand side of an 'instanceof' expression must be either of type 'any', a class, function, or other type assignable to the 'Function' interface type, or an object type with a 'Symbol.hasInstance' method.
 TS2362: The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
 TS2363: The right-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
 TS2364: The left-hand side of an assignment expression must be a variable or a property access.
 TS2365: Operator '{0}' cannot be applied to types '{1}' and '{2}'.
 TS2366: Function lacks ending return statement and return type does not include 'undefined'.
-TS2367: This condition will always return '{0}' since the types '{1}' and '{2}' have no overlap.
+TS2367: This comparison appears to be unintentional because the types '{0}' and '{1}' have no overlap.
 TS2368: Type parameter name cannot be '{0}'.
 TS2369: A parameter property is only allowed in a constructor implementation.
 TS2370: A rest parameter must be of an array type.
@@ -456,7 +552,6 @@ TS2376: A 'super' call must be the first statement in the constructor to refer t
 TS2377: Constructors for derived classes must contain a 'super' call.
 TS2378: A 'get' accessor must return a value.
 TS2379: Argument of type '{0}' is not assignable to parameter of type '{1}' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
-TS2380: The return type of a 'get' accessor must be assignable to its 'set' accessor type
 TS2383: Overload signatures must all be exported or non-exported.
 TS2384: Overload signatures must all be ambient or non-ambient.
 TS2385: Overload signatures must all be public, private or protected.
@@ -541,7 +636,7 @@ TS2468: Cannot find global value '{0}'.
 TS2469: The '{0}' operator cannot be applied to type 'symbol'.
 TS2472: Spread operator in 'new' expressions is only available when targeting ECMAScript 5 and higher.
 TS2473: Enum declarations must all be const or non-const.
-TS2474: const enum member initializers can only contain literal values and other computed enum values.
+TS2474: const enum member initializers must be constant expressions.
 TS2475: 'const' enums can only be used in property or index access expressions or the right hand side of an import declaration or export assignment or type query.
 TS2476: A const enum member can only be accessed using a string literal.
 TS2477: 'const' enum member initializer was evaluated to a non-finite value.
@@ -559,7 +654,7 @@ TS2492: Cannot redeclare identifier '{0}' in catch clause.
 TS2493: Tuple type '{0}' of length '{1}' has no element at index '{2}'.
 TS2494: Using a string in a 'for...of' statement is only supported in ECMAScript 5 and higher.
 TS2495: Type '{0}' is not an array type or a string type.
-TS2496: The 'arguments' object cannot be referenced in an arrow function in ES3 and ES5. Consider using a standard function expression.
+TS2496: The 'arguments' object cannot be referenced in an arrow function in ES5. Consider using a standard function expression.
 TS2497: This module can only be referenced with ECMAScript imports/exports by turning on the '{0}' flag and referencing its default export.
 TS2498: Module '{0}' uses 'export =' and cannot be used with 'export *'.
 TS2499: An interface can only extend an identifier/qualified-name with optional type arguments.
@@ -577,16 +672,16 @@ TS2510: Base constructors must all have the same return type.
 TS2511: Cannot create an instance of an abstract class.
 TS2512: Overload signatures must all be abstract or non-abstract.
 TS2513: Abstract method '{0}' in class '{1}' cannot be accessed via super expression.
-TS2515: Non-abstract class '{0}' does not implement inherited abstract member '{1}' from class '{2}'.
+TS2514: A tuple type cannot be indexed with a negative value.
+TS2515: Non-abstract class '{0}' does not implement inherited abstract member {1} from class '{2}'.
 TS2516: All declarations of an abstract method must be consecutive.
 TS2517: Cannot assign an abstract constructor type to a non-abstract constructor type.
 TS2518: A 'this'-based type guard is not compatible with a parameter-based type guard.
 TS2519: An async iterator must have a 'next()' method.
 TS2520: Duplicate identifier '{0}'. Compiler uses declaration '{1}' to support async functions.
-TS2522: The 'arguments' object cannot be referenced in an async function or method in ES3 and ES5. Consider using a standard function or method.
+TS2522: The 'arguments' object cannot be referenced in an async function or method in ES5. Consider using a standard function or method.
 TS2523: 'yield' expressions cannot be used in a parameter initializer.
 TS2524: 'await' expressions cannot be used in a parameter initializer.
-TS2525: Initializer provides no value for this binding element and the binding element has no default value.
 TS2526: A 'this' type is available only in a non-static member of a class or interface.
 TS2527: The inferred type of '{0}' references an inaccessible '{1}' type. A type annotation is necessary.
 TS2528: A module cannot have multiple default exports.
@@ -596,7 +691,6 @@ TS2531: Object is possibly 'null'.
 TS2532: Object is possibly 'undefined'.
 TS2533: Object is possibly 'null' or 'undefined'.
 TS2534: A function returning 'never' cannot have a reachable end point.
-TS2535: Enum type '{0}' has members with initializers that are not literals.
 TS2536: Type '{0}' cannot be used to index type '{1}'.
 TS2537: Type '{0}' has no matching index signature for type '{1}'.
 TS2538: Type '{0}' cannot be used as an index type.
@@ -646,7 +740,7 @@ TS2590: Expression produces a union type that is too complex to represent.
 TS2591: Cannot find name '{0}'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node` and then add 'node' to the types field in your tsconfig.
 TS2592: Cannot find name '{0}'. Do you need to install type definitions for jQuery? Try `npm i --save-dev @types/jquery` and then add 'jquery' to the types field in your tsconfig.
 TS2593: Cannot find name '{0}'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha` and then add 'jest' or 'mocha' to the types field in your tsconfig.
-TS2594: This module is declared with using 'export =', and can only be used with a default import when using the '{0}' flag.
+TS2594: This module is declared with 'export =', and can only be used with a default import when using the '{0}' flag.
 TS2595: '{0}' can only be imported by using a default import.
 TS2596: '{0}' can only be imported by turning on the 'esModuleInterop' flag and using a default import.
 TS2597: '{0}' can only be imported by using a 'require' call or by using a default import.
@@ -685,10 +779,16 @@ TS2634: '{0}' index signatures are incompatible.
 TS2635: Type '{0}' has no signatures for which the type argument list is applicable.
 TS2636: Type '{0}' is not assignable to type '{1}' as implied by variance annotation.
 TS2637: Variance annotations are only supported in type aliases for object, function, constructor, and mapped types.
+TS2638: Type '{0}' may represent a primitive value, which is not permitted as the right operand of the 'in' operator.
+TS2639: React components cannot include JSX namespace names
 TS2649: Cannot augment module '{0}' with value exports because it resolves to a non-module entity.
+TS2650: Non-abstract class expression is missing implementations for the following members of '{0}': {1} and {2} more.
 TS2651: A member initializer in a enum declaration cannot reference members declared after it, including members defined in other enums.
 TS2652: Merged declaration '{0}' cannot include a default export declaration. Consider adding a separate 'export default {0}' declaration instead.
 TS2653: Non-abstract class expression does not implement inherited abstract member '{0}' from class '{1}'.
+TS2654: Non-abstract class '{0}' is missing implementations for the following members of '{1}': {2}.
+TS2655: Non-abstract class '{0}' is missing implementations for the following members of '{1}': {2} and {3} more.
+TS2656: Non-abstract class expression is missing implementations for the following members of '{0}': {1}.
 TS2657: JSX expressions must have one parent element.
 TS2658: Type '{0}' provides no match for the signature '{1}'.
 TS2659: 'super' is only allowed in members of object literal expressions when option 'target' is 'ES2015' or higher.
@@ -722,7 +822,6 @@ TS2687: All declarations of '{0}' must have identical modifiers.
 TS2688: Cannot find type definition file for '{0}'.
 TS2689: Cannot extend an interface '{0}'. Did you mean 'implements'?
 TS2690: '{0}' only refers to a type, but is being used as a value here. Did you mean to use '{1} in {0}'?
-TS2691: An import path cannot end with a '{0}' extension. Consider importing '{1}' instead.
 TS2692: '{0}' is a primitive, but '{1}' is a wrapper object. Prefer using '{0}' when possible.
 TS2693: '{0}' only refers to a type, but is being used as a value here.
 TS2694: Namespace '{0}' has no exported member '{1}'.
@@ -736,14 +835,14 @@ TS2701: The target of an object rest assignment must be a variable or a property
 TS2702: '{0}' only refers to a type, but is being used as a namespace here.
 TS2703: The operand of a 'delete' operator must be a property reference.
 TS2704: The operand of a 'delete' operator cannot be a read-only property.
-TS2705: An async function or method in ES5/ES3 requires the 'Promise' constructor.  Make sure you have a declaration for the 'Promise' constructor or include 'ES2015' in your '--lib' option.
+TS2705: An async function or method in ES5 requires the 'Promise' constructor.  Make sure you have a declaration for the 'Promise' constructor or include 'ES2015' in your '--lib' option.
 TS2706: Required type parameters may not follow optional type parameters.
 TS2707: Generic type '{0}' requires between {1} and {2} type arguments.
 TS2708: Cannot use namespace '{0}' as a value.
 TS2709: Cannot use namespace '{0}' as a type.
 TS2710: '{0}' are specified twice. The attribute named '{0}' will be overwritten.
 TS2711: A dynamic import call returns a 'Promise'. Make sure you have a declaration for 'Promise' or include 'ES2015' in your '--lib' option.
-TS2712: A dynamic import call in ES5/ES3 requires the 'Promise' constructor.  Make sure you have a declaration for the 'Promise' constructor or include 'ES2015' in your '--lib' option.
+TS2712: A dynamic import call in ES5 requires the 'Promise' constructor.  Make sure you have a declaration for the 'Promise' constructor or include 'ES2015' in your '--lib' option.
 TS2713: Cannot access '{0}.{1}' because '{0}' is a type, but not a namespace. Did you mean to retrieve the type of the property '{1}' in '{0}' with '{0}["{1}"]'?
 TS2714: The expression of an export assignment must be an identifier or qualified name in an ambient context.
 TS2715: Abstract property '{0}' in class '{1}' cannot be accessed in the constructor.
@@ -756,7 +855,7 @@ TS2721: Cannot invoke an object which is possibly 'null'.
 TS2722: Cannot invoke an object which is possibly 'undefined'.
 TS2723: Cannot invoke an object which is possibly 'null' or 'undefined'.
 TS2724: '{0}' has no exported member named '{1}'. Did you mean '{2}'?
-TS2725: Class name cannot be 'Object' when targeting ES5 with module {0}.
+TS2725: Class name cannot be 'Object' when targeting ES5 and above with module {0}.
 TS2726: Cannot find lib definition for '{0}'.
 TS2727: Cannot find lib definition for '{0}'. Did you mean '{1}'?
 TS2728: '{0}' is declared here.
@@ -779,7 +878,7 @@ TS2744: Type parameter defaults can only reference previously declared type para
 TS2745: This JSX tag's '{0}' prop expects type '{1}' which requires multiple children, but only a single child was provided.
 TS2746: This JSX tag's '{0}' prop expects a single child of type '{1}', but multiple children were provided.
 TS2747: '{0}' components don't accept text as child elements. Text in JSX has the type 'string', but the expected type of '{1}' is '{2}'.
-TS2748: Cannot access ambient const enums when the '--isolatedModules' flag is provided.
+TS2748: Cannot access ambient const enums when '{0}' is enabled.
 TS2749: '{0}' refers to a value, but is being used as a type here. Did you mean 'typeof {0}'?
 TS2750: The implementation signature is declared here.
 TS2751: Circularity originates in type at this location.
@@ -823,7 +922,7 @@ TS2788: Its instance type '{0}' is not a valid JSX element.
 TS2789: Its element type '{0}' is not a valid JSX element.
 TS2790: The operand of a 'delete' operator must be optional.
 TS2791: Exponentiation cannot be performed on 'bigint' values unless the 'target' option is set to 'es2016' or later.
-TS2792: Cannot find module '{0}'. Did you mean to set the 'moduleResolution' option to 'node', or to add aliases to the 'paths' option?
+TS2792: Cannot find module '{0}'. Did you mean to set the 'moduleResolution' option to 'nodenext', or to add aliases to the 'paths' option?
 TS2793: The call would have succeeded against this implementation, but implementation signatures of overloads are not externally visible.
 TS2794: Expected {0} arguments, but got {1}. Did you forget to include 'void' in your type argument to 'Promise'?
 TS2795: The 'intrinsic' keyword can only be used to declare compiler provided intrinsic types.
@@ -839,27 +938,70 @@ TS2804: Duplicate identifier '{0}'. Static and instance elements cannot share th
 TS2806: Private accessor was defined without a getter.
 TS2807: This syntax requires an imported helper named '{1}' with {2} parameters, which is not compatible with the one in '{0}'. Consider upgrading your version of '{0}'.
 TS2808: A get accessor must be at least as accessible as the setter
-TS2809: Declaration or statement expected. This '=' follows a block of statements, so if you intended to write a destructuring assignment, you might need to wrap the the whole assignment in parentheses.
+TS2809: Declaration or statement expected. This '=' follows a block of statements, so if you intended to write a destructuring assignment, you might need to wrap the whole assignment in parentheses.
 TS2810: Expected 1 argument, but got 0. 'new Promise()' needs a JSDoc hint to produce a 'resolve' that can be called without arguments.
 TS2811: Initializer for property '{0}'
 TS2812: Property '{0}' does not exist on type '{1}'. Try changing the 'lib' compiler option to include 'dom'.
 TS2813: Class declaration cannot implement overload list for '{0}'.
 TS2814: Function with bodies can only merge with classes that are ambient.
-TS2815: 'arguments' cannot be referenced in property initializers.
+TS2815: 'arguments' cannot be referenced in property initializers or class static initialization blocks.
 TS2816: Cannot use 'this' in a static property initializer of a decorated class.
 TS2817: Property '{0}' has no initializer and is not definitely assigned in a class static block.
 TS2818: Duplicate identifier '{0}'. Compiler reserves name '{1}' when emitting 'super' references in static initializers.
 TS2819: Namespace name cannot be '{0}'.
 TS2820: Type '{0}' is not assignable to type '{1}'. Did you mean '{2}'?
-TS2821: Import assertions are only supported when the '--module' option is set to 'esnext' or 'nodenext'.
+TS2821: Import assertions are only supported when the '--module' option is set to 'esnext', 'node18', 'node20', 'nodenext', or 'preserve'.
 TS2822: Import assertions cannot be used with type-only imports or exports.
+TS2823: Import attributes are only supported when the '--module' option is set to 'esnext', 'node18', 'node20', 'nodenext', or 'preserve'.
 TS2833: Cannot find namespace '{0}'. Did you mean '{1}'?
-TS2834: Relative import paths need explicit file extensions in EcmaScript imports when '--moduleResolution' is 'node16' or 'nodenext'. Consider adding an extension to the import path.
-TS2835: Relative import paths need explicit file extensions in EcmaScript imports when '--moduleResolution' is 'node16' or 'nodenext'. Did you mean '{0}'?
-TS2836: Import assertions are not allowed on statements that transpile to commonjs 'require' calls.
+TS2834: Relative import paths need explicit file extensions in ECMAScript imports when '--moduleResolution' is 'node16' or 'nodenext'. Consider adding an extension to the import path.
+TS2835: Relative import paths need explicit file extensions in ECMAScript imports when '--moduleResolution' is 'node16' or 'nodenext'. Did you mean '{0}'?
+TS2836: Import assertions are not allowed on statements that compile to CommonJS 'require' calls.
 TS2837: Import assertion values must be string literal expressions.
 TS2838: All declarations of '{0}' must have identical constraints.
-TS2841: The type of this expression cannot be named without a 'resolution-mode' assertion, which is an unstable feature. Use nightly TypeScript to silence this error. Try updating with 'npm install -D typescript@next'.
+TS2839: This condition will always return '{0}' since JavaScript compares objects by reference, not value.
+TS2840: An interface cannot extend a primitive type like '{0}'. It can only extend other named object types.
+TS2842: '{0}' is an unused renaming of '{1}'. Did you intend to use it as a type annotation?
+TS2843: We can only write a type for '{0}' by adding a type for the entire parameter here.
+TS2844: Type of instance member variable '{0}' cannot reference identifier '{1}' declared in the constructor.
+TS2845: This condition will always return '{0}'.
+TS2846: A declaration file cannot be imported without 'import type'. Did you mean to import an implementation file '{0}' instead?
+TS2848: The right-hand side of an 'instanceof' expression must not be an instantiation expression.
+TS2849: Target signature provides too few arguments. Expected {0} or more, but got {1}.
+TS2850: The initializer of a 'using' declaration must be either an object with a '[Symbol.dispose]()' method, or be 'null' or 'undefined'.
+TS2851: The initializer of an 'await using' declaration must be either an object with a '[Symbol.asyncDispose]()' or '[Symbol.dispose]()' method, or be 'null' or 'undefined'.
+TS2852: 'await using' statements are only allowed within async functions and at the top levels of modules.
+TS2853: 'await using' statements are only allowed at the top level of a file when that file is a module, but this file has no imports or exports. Consider adding an empty 'export {}' to make this file a module.
+TS2854: Top-level 'await using' statements are only allowed when the 'module' option is set to 'es2022', 'esnext', 'system', 'node16', 'node18', 'node20', 'nodenext', or 'preserve', and the 'target' option is set to 'es2017' or higher.
+TS2855: Class field '{0}' defined by the parent class is not accessible in the child class via super.
+TS2856: Import attributes are not allowed on statements that compile to CommonJS 'require' calls.
+TS2857: Import attributes cannot be used with type-only imports or exports.
+TS2858: Import attribute values must be string literal expressions.
+TS2859: Excessive complexity comparing types '{0}' and '{1}'.
+TS2860: The left-hand side of an 'instanceof' expression must be assignable to the first argument of the right-hand side's '[Symbol.hasInstance]' method.
+TS2861: An object's '[Symbol.hasInstance]' method must return a boolean value for it to be used on the right-hand side of an 'instanceof' expression.
+TS2862: Type '{0}' is generic and can only be indexed for reading.
+TS2863: A class cannot extend a primitive type like '{0}'. Classes can only extend constructable values.
+TS2864: A class cannot implement a primitive type like '{0}'. It can only implement other named object types.
+TS2865: Import '{0}' conflicts with local value, so must be declared with a type-only import when 'isolatedModules' is enabled.
+TS2866: Import '{0}' conflicts with global value used in this file, so must be declared with a type-only import when 'isolatedModules' is enabled.
+TS2867: Cannot find name '{0}'. Do you need to install type definitions for Bun? Try `npm i --save-dev @types/bun`.
+TS2868: Cannot find name '{0}'. Do you need to install type definitions for Bun? Try `npm i --save-dev @types/bun` and then add 'bun' to the types field in your tsconfig.
+TS2869: Right operand of ?? is unreachable because the left operand is never nullish.
+TS2870: This binary expression is never nullish. Are you missing parentheses?
+TS2871: This expression is always nullish.
+TS2872: This kind of expression is always truthy.
+TS2873: This kind of expression is always falsy.
+TS2874: This JSX tag requires '{0}' to be in scope, but it could not be found.
+TS2875: This JSX tag requires the module path '{0}' to exist, but none could be found. Make sure you have types for the appropriate package installed.
+TS2876: This relative import path is unsafe to rewrite because it looks like a file name, but actually resolves to "{0}".
+TS2877: This import uses a '{0}' extension to resolve to an input TypeScript file, but will not be rewritten during emit because it is not a relative path.
+TS2878: This import path is unsafe to rewrite because it resolves to another project, and the relative path between the projects' output files is not the same as the relative path between its input files.
+TS2879: Using JSX fragments requires fragment factory '{0}' to be in scope, but it could not be found.
+TS2880: Import assertions have been replaced by import attributes. Use 'with' instead of 'assert'.
+TS2881: This expression is never nullish.
+TS2882: Cannot find module or type declarations for side-effect import of '{0}'.
+TS2883: The inferred type of '{0}' cannot be named without a reference to '{2}' from '{1}'. This is likely not portable. A type annotation is necessary.
 TS4000: Import declaration '{0}' is using private name '{1}'.
 TS4002: Type parameter '{0}' of exported class has or is using private name '{1}'.
 TS4004: Type parameter '{0}' of exported interface has or is using private name '{1}'.
@@ -933,10 +1075,10 @@ TS4081: Exported type alias '{0}' has or is using private name '{1}'.
 TS4082: Default export of the module has or is using private name '{0}'.
 TS4083: Type parameter '{0}' of exported type alias has or is using private name '{1}'.
 TS4084: Exported type alias '{0}' has or is using private name '{1}' from module {2}.
-TS4090: Conflicting definitions for '{0}' found at '{1}' and '{2}'. Consider installing a specific version of this library to resolve the conflict.
+TS4085: Extends clause for inferred type '{0}' has or is using private name '{1}'.
 TS4091: Parameter '{0}' of index signature from exported interface has or is using name '{1}' from private module '{2}'.
 TS4092: Parameter '{0}' of index signature from exported interface has or is using private name '{1}'.
-TS4094: Property '{0}' of exported class expression may not be private or protected.
+TS4094: Property '{0}' of exported anonymous class type may not be private or protected.
 TS4095: Public static method '{0}' of exported class has or is using name '{1}' from external module {2} but cannot be named.
 TS4096: Public static method '{0}' of exported class has or is using name '{1}' from private module '{2}'.
 TS4097: Public static method '{0}' of exported class has or is using private name '{1}'.
@@ -967,19 +1109,21 @@ TS4121: This member cannot have a JSDoc comment with an '@override' tag because 
 TS4122: This member cannot have a JSDoc comment with an '@override' tag because it is not declared in the base class '{0}'.
 TS4123: This member cannot have a JSDoc comment with an 'override' tag because it is not declared in the base class '{0}'. Did you mean '{1}'?
 TS4124: Compiler option '{0}' of value '{1}' is unstable. Use nightly TypeScript to silence this error. Try updating with 'npm install -D typescript@next'.
-TS4125: 'resolution-mode' assertions are unstable. Use nightly TypeScript to silence this error. Try updating with 'npm install -D typescript@next'.
+TS4125: Each declaration of '{0}.{1}' differs in its value, where '{2}' was expected but '{3}' was given.
+TS4126: One value of '{0}.{1}' is the string '{2}', and the other is assumed to be an unknown numeric value.
+TS4127: This member cannot have an 'override' modifier because its name is dynamic.
+TS4128: This member cannot have a JSDoc comment with an '@override' tag because its name is dynamic.
 TS5001: The current host does not support the '{0}' option.
 TS5009: Cannot find the common subdirectory path for the input files.
 TS5010: File specification cannot end in a recursive directory wildcard ('**'): '{0}'.
+TS5011: The common source directory of '{0}' is '{1}'. The 'rootDir' setting must be explicitly set to this or another path to adjust your output's file layout.
 TS5012: Cannot read file '{0}': {1}.
-TS5014: Failed to parse file '{0}': {1}.
 TS5023: Unknown compiler option '{0}'.
 TS5024: Compiler option '{0}' requires a value of type {1}.
 TS5025: Unknown compiler option '{0}'. Did you mean '{1}'?
 TS5033: Could not write file '{0}': {1}.
 TS5042: Option 'project' cannot be mixed with source files on a command line.
 TS5047: Option 'isolatedModules' can only be used when either option '--module' is provided or option 'target' is 'ES2015' or higher.
-TS5048: Option '{0}' cannot be specified when option 'target' is 'ES3'.
 TS5051: Option '{0} can only be used when either option '--inlineSourceMap' or option '--sourceMap' is provided.
 TS5052: Option '{0}' cannot be specified without specifying option '{1}'.
 TS5053: Option '{0}' cannot be specified with option '{1}'.
@@ -998,8 +1142,8 @@ TS5066: Substitutions for pattern '{0}' shouldn't be an empty array.
 TS5067: Invalid value for 'jsxFactory'. '{0}' is not a valid identifier or qualified-name.
 TS5068: Adding a tsconfig.json file will help organize projects that contain both TypeScript and JavaScript files. Learn more at https://aka.ms/tsconfig.
 TS5069: Option '{0}' cannot be specified without specifying option '{1}' or option '{2}'.
-TS5070: Option '--resolveJsonModule' cannot be specified without 'node' module resolution strategy.
-TS5071: Option '--resolveJsonModule' can only be specified when module code generation is 'commonjs', 'amd', 'es2015' or 'esNext'.
+TS5070: Option '--resolveJsonModule' cannot be specified when 'moduleResolution' is set to 'classic'.
+TS5071: Option '--resolveJsonModule' cannot be specified when 'module' is set to 'none', 'system', or 'umd'.
 TS5072: Unknown build option '{0}'.
 TS5073: Build option '{0}' requires a value of type {1}.
 TS5074: Option '--incremental' can only be specified using tsconfig, emitting to single file or when option '--tsBuildInfoFile' is specified.
@@ -1012,18 +1156,32 @@ TS5080: Watch option '{0}' requires a value of type {1}.
 TS5081: Cannot find a tsconfig.json file at the current directory: {0}.
 TS5082: '{0}' could be instantiated with an arbitrary type which could be unrelated to '{1}'.
 TS5083: Cannot read file '{0}'.
-TS5084: Tuple members must all have names or all not have names.
 TS5085: A tuple member cannot be both optional and rest.
 TS5086: A labeled tuple element is declared as optional with a question mark after the name and before the colon, rather than after the type.
 TS5087: A labeled tuple element is declared as rest with a '...' before the name, rather than before the type.
 TS5088: The inferred type of '{0}' references a type with a cyclic structure which cannot be trivially serialized. A type annotation is necessary.
 TS5089: Option '{0}' cannot be specified when option 'jsx' is '{1}'.
 TS5090: Non-relative paths are not allowed when 'baseUrl' is not set. Did you forget a leading './'?
-TS5091: Option 'preserveConstEnums' cannot be disabled when 'isolatedModules' is enabled.
+TS5091: Option 'preserveConstEnums' cannot be disabled when '{0}' is enabled.
 TS5092: The root value of a '{0}' file must be an object.
 TS5093: Compiler option '--{0}' may only be used with '--build'.
 TS5094: Compiler option '--{0}' may not be used with '--build'.
-TS5095: Option 'preserveValueImports' can only be used when 'module' is set to 'es2015' or later.
+TS5095: Option '{0}' can only be used when 'module' is set to 'preserve', 'commonjs', or 'es2015' or later.
+TS5096: Option 'allowImportingTsExtensions' can only be used when one of 'noEmit', 'emitDeclarationOnly', or 'rewriteRelativeImportExtensions' is set.
+TS5097: An import path can only end with a '{0}' extension when 'allowImportingTsExtensions' is enabled.
+TS5098: Option '{0}' can only be used when 'moduleResolution' is set to 'node16', 'nodenext', or 'bundler'.
+TS5101: Option '{0}' is deprecated and will stop functioning in TypeScript {1}. Specify compilerOption '"ignoreDeprecations": "{2}"' to silence this error.
+TS5102: Option '{0}' has been removed. Please remove it from your configuration.
+TS5103: Invalid value for '--ignoreDeprecations'.
+TS5104: Option '{0}' is redundant and cannot be specified with option '{1}'.
+TS5105: Option 'verbatimModuleSyntax' cannot be used when 'module' is set to 'UMD', 'AMD', or 'System'.
+TS5106: Use '{0}' instead.
+TS5107: Option '{0}={1}' is deprecated and will stop functioning in TypeScript {2}. Specify compilerOption '"ignoreDeprecations": "{3}"' to silence this error.
+TS5108: Option '{0}={1}' has been removed. Please remove it from your configuration.
+TS5109: Option 'moduleResolution' must be set to '{0}' (or left unspecified) when option 'module' is set to '{1}'.
+TS5110: Option 'module' must be set to '{0}' when option 'moduleResolution' is set to '{1}'.
+TS5111: Visit https://aka.ms/ts6 for migration information.
+TS5112: tsconfig.json is present but will not be loaded if files are specified on commandline. Use '--ignoreConfig' to skip this error.
 TS6000: Generates a sourcemap for each corresponding '.d.ts' file.
 TS6001: Concatenate and emit output to single file.
 TS6002: Generates corresponding '.d.ts' file.
@@ -1079,7 +1237,6 @@ TS6061: NEWLINE
 TS6064: Option '{0}' can only be specified in 'tsconfig.json' file or set to 'null' on command line.
 TS6065: Enables experimental support for ES7 decorators.
 TS6066: Enables experimental support for emitting type metadata for decorators.
-TS6069: Specify module resolution strategy: 'node' (Node.js) or 'classic' (TypeScript pre-1.6).
 TS6070: Initializes a TypeScript project and creates a tsconfig.json file.
 TS6071: Successfully created a tsconfig.json file.
 TS6072: Suppress excess property checks for object literals.
@@ -1091,7 +1248,6 @@ TS6077: Do not report errors on unreachable code.
 TS6078: Disallow inconsistently-cased references to the same file.
 TS6079: Specify library files to be included in the compilation.
 TS6080: Specify JSX code generation.
-TS6081: File '{0}' has an unsupported extension, so skipping it.
 TS6082: Only 'amd' and 'system' modules are supported alongside --{0}.
 TS6083: Base directory to resolve non-absolute module names.
 TS6084: [Deprecated] Use '--jsxFactory' instead. Specify the object invoked for createElement when targeting 'react' JSX emit
@@ -1105,10 +1261,10 @@ TS6091: 'paths' option is specified, looking for a pattern to match module name 
 TS6092: Module name '{0}', matched pattern '{1}'.
 TS6093: Trying substitution '{0}', candidate module location: '{1}'.
 TS6094: Resolving module name '{0}' relative to base url '{1}' - '{2}'.
-TS6095: Loading module as file / folder, candidate module location '{0}', target file type '{1}'.
+TS6095: Loading module as file / folder, candidate module location '{0}', target file types: {1}.
 TS6096: File '{0}' does not exist.
-TS6097: File '{0}' exist - use it as a name resolution result.
-TS6098: Loading module '{0}' from 'node_modules' folder, target file type '{1}'.
+TS6097: File '{0}' exists - use it as a name resolution result.
+TS6098: Loading module '{0}' from 'node_modules' folder, target file types: {1}.
 TS6099: Found 'package.json' at '{0}'.
 TS6100: 'package.json' does not have a '{0}' field.
 TS6101: 'package.json' has '{0}' field '{1}' that references '{2}'.
@@ -1150,7 +1306,6 @@ TS6140: Auto discovery for typings is enabled in project '{0}'. Running extra re
 TS6141: Parse in strict mode and emit "use strict" for each source file.
 TS6142: Module '{0}' was resolved to '{1}', but '--jsx' is not set.
 TS6144: Module '{0}' was resolved as locally declared ambient module in file '{1}'.
-TS6145: Module '{0}' was resolved as ambient module declared in '{1}' since this file was not modified.
 TS6146: Specify the JSX factory function to use when targeting 'react' JSX emit, e.g. 'React.createElement' or 'h'.
 TS6147: Resolution for module '{0}' was found in cache from location '{1}'.
 TS6148: Directory '{0}' does not exist, skipping all lookups in it.
@@ -1169,6 +1324,7 @@ TS6160: [Deprecated] Use '--skipLibCheck' instead. Skip type checking of default
 TS6161: List of folders to include type definitions from.
 TS6162: Disable size limitations on JavaScript projects.
 TS6163: The character set of the input files.
+TS6164: Skipping module '{0}' that looks like an absolute URI, target file types: {1}.
 TS6165: Do not truncate error messages.
 TS6166: Output directory for generated declaration files.
 TS6167: A series of entries which re-map imports to lookup locations relative to the 'baseUrl'.
@@ -1176,7 +1332,7 @@ TS6168: List of root folders whose combined content represents the structure of 
 TS6169: Show all compiler options.
 TS6170: [Deprecated] Use '--outFile' instead. Concatenate and emit output to single file
 TS6171: Command-line Options
-TS6179: Provide full support for iterables in 'for-of', spread, and destructuring when targeting 'ES5' or 'ES3'.
+TS6179: Provide full support for iterables in 'for-of', spread, and destructuring when targeting 'ES5'.
 TS6180: Enable all strict type-checking options.
 TS6182: Scoped package detected, looking in '{0}'
 TS6183: Reusing resolution of module '{0}' from '{1}' of old program, it was successfully resolved to '{2}'.
@@ -1252,9 +1408,14 @@ TS6255: Projects
 TS6256: Output Formatting
 TS6257: Completeness
 TS6258: '{0}' should be set inside the 'compilerOptions' object of the config json file
-TS6259: Found 1 error in {1}
+TS6259: Found 1 error in {0}
 TS6260: Found {0} errors in the same file, starting at: {1}
 TS6261: Found {0} errors in {1} files.
+TS6262: File name '{0}' has a '{1}' extension - looking up '{2}' instead.
+TS6263: Module '{0}' was resolved to '{1}', but '--allowArbitraryExtensions' is not set.
+TS6264: Enable importing files with any extension, provided a declaration file is present.
+TS6265: Resolving type reference directive for program that specifies custom typeRoots, skipping lookup in 'node_modules' folder.
+TS6266: Option '{0}' can only be specified on command line.
 TS6270: Directory '{0}' has no containing package.json scope. Imports will not resolve.
 TS6271: Import specifier '{0}' does not exist in package.json scope at path '{1}'.
 TS6272: Invalid import specifier '{0}' has no possible resolutions.
@@ -1262,16 +1423,30 @@ TS6273: package.json scope '{0}' has no imports defined.
 TS6274: package.json scope '{0}' explicitly maps specifier '{1}' to null.
 TS6275: package.json scope '{0}' has invalid type for target of specifier '{1}'
 TS6276: Export specifier '{0}' does not exist in package.json scope at path '{1}'.
+TS6277: Resolution of non-relative name failed; trying with modern Node resolution features disabled to see if npm library needs configuration update.
+TS6278: There are types at '{0}', but this result could not be resolved when respecting package.json "exports". The '{1}' library may need to update its package.json or typings.
+TS6279: Resolution of non-relative name failed; trying with '--moduleResolution bundler' to see if project may need configuration update.
+TS6280: There are types at '{0}', but this result could not be resolved under your current 'moduleResolution' setting. Consider updating to 'node16', 'nodenext', or 'bundler'.
+TS6281: 'package.json' has a 'peerDependencies' field.
+TS6282: Found peerDependency '{0}' with '{1}' version.
+TS6283: Failed to find peerDependency '{0}'.
+TS6284: File Layout
+TS6285: Environment Settings
+TS6286: See also https://aka.ms/tsconfig/module
+TS6287: For nodejs:
+TS6290: and npm install -D @types/node
+TS6291: Other Outputs
+TS6292: Stricter Typechecking Options
+TS6293: Style Options
+TS6294: Recommended Options
 TS6302: Enable project compilation
 TS6304: Composite projects may not disable declaration emit.
 TS6305: Output file '{0}' has not been built from source file '{1}'.
 TS6306: Referenced project '{0}' must have setting "composite": true.
 TS6307: File '{0}' is not listed within the file list of project '{1}'. Projects must list all files or use an 'include' pattern.
-TS6308: Cannot prepend project '{0}' because it does not have 'outFile' set
-TS6309: Output file '{0}' from project '{1}' does not exist
 TS6310: Referenced project '{0}' may not disable emit.
-TS6350: Project '{0}' is out of date because oldest output '{1}' is older than newest input '{2}'
-TS6351: Project '{0}' is up to date because newest input '{1}' is older than oldest output '{2}'
+TS6350: Project '{0}' is out of date because output '{1}' is older than input '{2}'
+TS6351: Project '{0}' is up to date because newest input '{1}' is older than output '{2}'
 TS6352: Project '{0}' is out of date because output file '{1}' does not exist
 TS6353: Project '{0}' is out of date because its dependency '{1}' is out of date
 TS6354: Project '{0}' is up to date with .d.ts files from its dependencies
@@ -1289,11 +1464,7 @@ TS6367: Show what would be built (or deleted, if specified with '--clean')
 TS6369: Option '--build' must be the first command line argument.
 TS6370: Options '{0}' and '{1}' cannot be combined.
 TS6371: Updating unchanged output timestamps of project '{0}'...
-TS6372: Project '{0}' is out of date because output of its dependency '{1}' has changed
-TS6373: Updating output of project '{0}'...
 TS6374: A non-dry build would update timestamps for output of project '{0}'
-TS6375: A non-dry build would update output of project '{0}'
-TS6376: Cannot update output of project '{0}' because there was error reading file '{1}'
 TS6377: Cannot write file '{0}' because it will overwrite '.tsbuildinfo' file generated by referenced project '{1}'
 TS6379: Composite projects may not disable incremental compilation.
 TS6380: Specify file to store incremental compilation information
@@ -1315,6 +1486,29 @@ TS6395: Reusing resolution of module '{0}' from '{1}' found in cache from locati
 TS6396: Reusing resolution of type reference directive '{0}' from '{1}' found in cache from location '{2}', it was successfully resolved to '{3}'.
 TS6397: Reusing resolution of type reference directive '{0}' from '{1}' found in cache from location '{2}', it was successfully resolved to '{3}' with Package ID '{4}'.
 TS6398: Reusing resolution of type reference directive '{0}' from '{1}' found in cache from location '{2}', it was not resolved.
+TS6399: Project '{0}' is out of date because buildinfo file '{1}' indicates that some of the changes were not emitted
+TS6400: Project '{0}' is up to date but needs to update timestamps of output files that are older than input files
+TS6401: Project '{0}' is out of date because there was error reading file '{1}'
+TS6402: Resolving in {0} mode with conditions {1}.
+TS6403: Matched '{0}' condition '{1}'.
+TS6404: Using '{0}' subpath '{1}' with target '{2}'.
+TS6405: Saw non-matching condition '{0}'.
+TS6406: Project '{0}' is out of date because buildinfo file '{1}' indicates there is change in compilerOptions
+TS6407: Allow imports to include TypeScript file extensions. Requires '--moduleResolution bundler' and either '--noEmit' or '--emitDeclarationOnly' to be set.
+TS6408: Use the package.json 'exports' field when resolving package imports.
+TS6409: Use the package.json 'imports' field when resolving imports.
+TS6410: Conditions to set in addition to the resolver-specific defaults when resolving imports.
+TS6411: `true` when 'moduleResolution' is 'node16', 'nodenext', or 'bundler'; otherwise `false`.
+TS6412: Project '{0}' is out of date because buildinfo file '{1}' indicates that file '{2}' was root file of compilation but not any more.
+TS6413: Entering conditional exports.
+TS6414: Resolved under condition '{0}'.
+TS6415: Failed to resolve under condition '{0}'.
+TS6416: Exiting conditional exports.
+TS6417: Searching all ancestor node_modules directories for preferred extensions: {0}.
+TS6418: Searching all ancestor node_modules directories for fallback extensions: {0}.
+TS6419: Project '{0}' is out of date because buildinfo file '{1}' indicates that program needs to report errors.
+TS6420: Project '{0}' is out of date because {1}.
+TS6421: Rewrite '.ts', '.tsx', '.mts', and '.cts' file extensions in relative import paths to their JavaScript equivalent in output files.
 TS6500: The expected type comes from property '{0}' which is declared here on type '{1}'
 TS6501: The expected type comes from this index signature.
 TS6502: The expected type comes from the return type of this signature.
@@ -1322,7 +1516,7 @@ TS6503: Print names of files that are part of the compilation and then stop proc
 TS6504: File '{0}' is a JavaScript file. Did you mean to enable the 'allowJs' option?
 TS6505: Print names of files and the reason they are part of the compilation.
 TS6506: Consider adding a 'declare' modifier to this class.
-TS6600: Allow JavaScript files to be a part of your program. Use the 'checkJS' option to get errors from these files.
+TS6600: Allow JavaScript files to be a part of your program. Use the 'checkJs' option to get errors from these files.
 TS6601: Allow 'import x from y' when a module doesn't have a default export.
 TS6602: Allow accessing UMD globals from modules.
 TS6603: Disable error reporting for unreachable code.
@@ -1351,7 +1545,7 @@ TS6626: Emit additional JavaScript to ease support for importing CommonJS module
 TS6627: Filters results from the `include` option.
 TS6628: Remove a list of directories from the watch process.
 TS6629: Remove a list of files from the watch mode's processing.
-TS6630: Enable experimental support for TC39 stage 2 draft decorators.
+TS6630: Enable experimental support for legacy experimental decorators.
 TS6631: Print files read during the compilation including why it was included.
 TS6632: Output more detailed compiler performance information after building.
 TS6633: Specify one or more path or node module references to base configuration files from which settings are inherited.
@@ -1361,6 +1555,7 @@ TS6636: Build all projects, including those that appear to be up to date.
 TS6637: Ensure that casing is correct in imports.
 TS6638: Emit a v8 CPU profile of the compiler run for debugging.
 TS6639: Allow importing helper functions from tslib once per project, instead of including them per-file.
+TS6640: Skip building downstream projects on error in upstream project.
 TS6641: Specify a list of glob patterns that match files to be included in compilation.
 TS6642: Save .tsbuildinfo files to allow for incremental compilation of projects.
 TS6643: Include sourcemap files inside the emitted JavaScript.
@@ -1436,18 +1631,26 @@ TS6714: Specify how directories are watched on systems that lack recursive file-
 TS6715: Specify how the TypeScript watch mode works.
 TS6717: Require undeclared properties from index signatures to use element accesses.
 TS6718: Specify emit/checking behavior for imports that are only used for types.
+TS6719: Require sufficient annotation on exports so other tools can trivially generate declaration files.
+TS6720: Built-in iterators are instantiated with a 'TReturn' type of 'undefined' instead of 'any'.
+TS6721: Do not allow runtime constructs that are not part of ECMAScript.
 TS6803: Default catch clause variables as 'unknown' instead of 'any'.
+TS6804: Do not transform or elide any imports or exports not marked as type-only, ensuring they are written in the output file's format based on the 'module' setting.
+TS6805: Disable full type checking (only critical parse and emit errors will be reported).
+TS6806: Check side effect imports.
+TS6807: This operation can be simplified. This shift is identical to `{0} {1} {2}`.
+TS6808: Enable lib replacement.
+TS6809: Ensure types are ordered stably and deterministically across compilations.
 TS6900: one of:
 TS6901: one or more:
 TS6902: type:
 TS6903: default:
-TS6904: module === "system" or esModuleInterop
-TS6905: `false`, unless `strict` is set
+TS6905: `true`, unless `strict` is `false`
 TS6906: `false`, unless `composite` is set
 TS6907: `["node_modules", "bower_components", "jspm_packages"]`, plus the value of `outDir` if one is specified.
 TS6908: `[]` if `files` is specified, otherwise `["**/*"]`
 TS6909: `true` if `composite`, `false` otherwise
-TS69010: module === `AMD` or `UMD` or `System` or `ES6`, then `Classic`, Otherwise `Node`
+TS69010: `nodenext` if `module` is `nodenext`; `node16` if `module` is `node16` or `node18`; otherwise, `bundler`.
 TS6911: Computed from the list of input files
 TS6912: Platform specific
 TS6913: You can learn about all of the compiler options at {0}
@@ -1469,12 +1672,14 @@ TS6928: An expanded version of this information, showing all possible compiler o
 TS6929: Compiles the current project, with additional settings.
 TS6930: `true` for ES2022 and above, including ESNext.
 TS6931: List of file name suffixes to search when resolving a module.
+TS6932: `false`, unless `checkJs` is set
 TS7005: Variable '{0}' implicitly has an '{1}' type.
 TS7006: Parameter '{0}' implicitly has an '{1}' type.
 TS7008: Member '{0}' implicitly has an '{1}' type.
 TS7009: 'new' expression, whose target lacks a construct signature, implicitly has an 'any' type.
 TS7010: '{0}', which lacks return-type annotation, implicitly has an '{1}' return type.
 TS7011: Function expression, which lacks return-type annotation, implicitly has an '{0}' return type.
+TS7012: This overload implicitly returns the type '{0}' because it lacks a return type annotation.
 TS7013: Construct signature, which lacks return-type annotation, implicitly has an 'any' return type.
 TS7014: Function type, which lacks return-type annotation, implicitly has an '{0}' return type.
 TS7015: Element implicitly has an 'any' type because index expression is not of type 'number'.
@@ -1486,7 +1691,7 @@ TS7020: Call signature, which lacks return-type annotation, implicitly has an 'a
 TS7022: '{0}' implicitly has type 'any' because it does not have a type annotation and is referenced directly or indirectly in its own initializer.
 TS7023: '{0}' implicitly has return type 'any' because it does not have a return type annotation and is referenced directly or indirectly in one of its return expressions.
 TS7024: Function implicitly has return type 'any' because it does not have a return type annotation and is referenced directly or indirectly in one of its return expressions.
-TS7025: Generator implicitly has yield type '{0}' because it does not yield any values. Consider supplying a return type annotation.
+TS7025: Generator implicitly has yield type '{0}'. Consider supplying a return type annotation.
 TS7026: JSX element implicitly has type 'any' because no interface 'JSX.{0}' exists.
 TS7027: Unreachable code detected.
 TS7028: Unused label.
@@ -1537,8 +1742,7 @@ TS8011: Type arguments can only be used in TypeScript files.
 TS8012: Parameter modifiers can only be used in TypeScript files.
 TS8013: Non-null assertions can only be used in TypeScript files.
 TS8016: Type assertion expressions can only be used in TypeScript files.
-TS8017: Octal literal types must use ES2015 syntax. Use the syntax '{0}'.
-TS8018: Octal literals are not allowed in enums members initializer. Use the syntax '{0}'.
+TS8017: Signature declarations can only be used in TypeScript files.
 TS8019: Report errors in .js files.
 TS8020: JSDoc types can only be used inside documentation comments.
 TS8021: JSDoc '@typedef' tag should either have a type annotation or be followed by '@property' or '@member' tags.
@@ -1555,8 +1759,45 @@ TS8031: You cannot rename a module via a global import.
 TS8032: Qualified name '{0}' is not allowed without a leading '@param {object} {1}'.
 TS8033: A JSDoc '@typedef' comment may not contain multiple '@type' tags.
 TS8034: The tag was first specified here.
+TS8035: You cannot rename elements that are defined in a 'node_modules' folder.
+TS8036: You cannot rename elements that are defined in another 'node_modules' folder.
+TS8037: Type satisfaction expressions can only be used in TypeScript files.
+TS8038: Decorators may not appear after 'export' or 'export default' if they also appear before 'export'.
+TS8039: A JSDoc '@template' tag may not follow a '@typedef', '@callback', or '@overload' tag
 TS9005: Declaration emit for this file requires using private name '{0}'. An explicit type annotation may unblock declaration emit.
 TS9006: Declaration emit for this file requires using private name '{0}' from module '{1}'. An explicit type annotation may unblock declaration emit.
+TS9007: Function must have an explicit return type annotation with --isolatedDeclarations.
+TS9008: Method must have an explicit return type annotation with --isolatedDeclarations.
+TS9009: At least one accessor must have an explicit type annotation with --isolatedDeclarations.
+TS9010: Variable must have an explicit type annotation with --isolatedDeclarations.
+TS9011: Parameter must have an explicit type annotation with --isolatedDeclarations.
+TS9012: Property must have an explicit type annotation with --isolatedDeclarations.
+TS9013: Expression type can't be inferred with --isolatedDeclarations.
+TS9014: Computed properties must be number or string literals, variables or dotted expressions with --isolatedDeclarations.
+TS9015: Objects that contain spread assignments can't be inferred with --isolatedDeclarations.
+TS9016: Objects that contain shorthand properties can't be inferred with --isolatedDeclarations.
+TS9017: Only const arrays can be inferred with --isolatedDeclarations.
+TS9018: Arrays with spread elements can't inferred with --isolatedDeclarations.
+TS9019: Binding elements can't be exported directly with --isolatedDeclarations.
+TS9020: Enum member initializers must be computable without references to external symbols with --isolatedDeclarations.
+TS9021: Extends clause can't contain an expression with --isolatedDeclarations.
+TS9022: Inference from class expressions is not supported with --isolatedDeclarations.
+TS9023: Assigning properties to functions without declaring them is not supported with --isolatedDeclarations. Add an explicit declaration for the properties assigned to this function.
+TS9025: Declaration emit for this parameter requires implicitly adding undefined to its type. This is not supported with --isolatedDeclarations.
+TS9026: Declaration emit for this file requires preserving this import for augmentations. This is not supported with --isolatedDeclarations.
+TS9027: Add a type annotation to the variable {0}.
+TS9028: Add a type annotation to the parameter {0}.
+TS9029: Add a type annotation to the property {0}.
+TS9030: Add a return type to the function expression.
+TS9031: Add a return type to the function declaration.
+TS9032: Add a return type to the get accessor declaration.
+TS9033: Add a type to parameter of the set accessor declaration.
+TS9034: Add a return type to the method
+TS9035: Add satisfies and a type assertion to this expression (satisfies T as T) to make the type explicit.
+TS9036: Move the expression in default export to a variable and add a type annotation to it.
+TS9037: Default exports can't be inferred with --isolatedDeclarations.
+TS9038: Computed property names on class or object literals cannot be inferred with --isolatedDeclarations.
+TS9039: Type containing private name '{0}' can't be used with --isolatedDeclarations.
 TS17000: JSX attributes must only be assigned a non-empty 'expression'.
 TS17001: JSX elements cannot have multiple attributes with the same name.
 TS17002: Expected corresponding JSX closing tag for '{0}'.
@@ -1575,6 +1816,9 @@ TS17015: Expected corresponding closing tag for JSX fragment.
 TS17016: The 'jsxFragmentFactory' compiler option must be provided to use JSX fragments with the 'jsxFactory' compiler option.
 TS17017: An @jsxFrag pragma is required when using an @jsx pragma with JSX fragments.
 TS17018: Unknown type acquisition option '{0}'. Did you mean '{1}'?
+TS17019: '{0}' at the end of a type is not valid TypeScript syntax. Did you mean to write '{1}'?
+TS17020: '{0}' at the start of a type is not valid TypeScript syntax. Did you mean to write '{1}'?
+TS17021: Unicode escape sequence cannot appear here.
 TS18000: Circularity detected while resolving configuration: {0}
 TS18002: The 'files' list in config file '{0}' is empty.
 TS18003: No inputs were found in config file '{0}'. Specified 'include' paths were '{1}' and 'exclude' paths were '{2}'.
@@ -1586,6 +1830,8 @@ TS80005: 'require' call may be converted to an import.
 TS80006: This may be converted to an async function.
 TS80007: 'await' has no effect on the type of this expression.
 TS80008: Numeric literals with absolute values equal to 2^53 or greater are too large to be represented accurately as integers.
+TS80009: JSDoc typedef may be converted to TypeScript type.
+TS80010: JSDoc typedefs may be converted to TypeScript types.
 TS90001: Add missing 'super()' call
 TS90002: Make 'super()' call the first statement in the constructor
 TS90003: Change 'extends' to 'implements'
@@ -1628,6 +1874,19 @@ TS90055: Remove 'type' from import declaration from "{0}"
 TS90056: Remove 'type' from import of '{0}' from "{1}"
 TS90057: Add import from "{0}"
 TS90058: Update import from "{0}"
+TS90059: Export '{0}' from module '{1}'
+TS90060: Export all referenced locals
+TS90061: Update modifiers of '{0}'
+TS90062: Add annotation of type '{0}'
+TS90063: Add return type '{0}'
+TS90064: Extract base class to variable
+TS90065: Extract default export to variable
+TS90066: Extract binding expressions to variable
+TS90067: Add all missing type annotations
+TS90068: Add satisfies and an inline type assertion with '{0}'
+TS90069: Extract to variable and replace with '{0} as typeof {0}'
+TS90070: Mark array literal as const
+TS90071: Annotate types of properties expando function in a namespace
 TS95001: Convert function to an ES2015 class
 TS95003: Convert '{0}' to '{1} in {0}'
 TS95004: Extract to {0} in {1}
@@ -1726,6 +1985,7 @@ TS95098: Set the 'target' option in your configuration file to '{0}'
 TS95099: Set the 'module' option in your configuration file to '{0}'
 TS95100: Convert invalid character to its html entity code
 TS95101: Convert all invalid characters to HTML entity code
+TS95102: Convert all 'const' to 'let'
 TS95105: Convert function expression '{0}' to arrow function
 TS95106: Convert function declaration '{0}' to arrow function
 TS95107: Fix all implicit-'this' errors
@@ -1775,7 +2035,7 @@ TS95150: Could not determine function return type
 TS95151: Could not convert to arrow function
 TS95152: Could not convert to named function
 TS95153: Could not convert to anonymous function
-TS95154: Can only convert string concatenation
+TS95154: Can only convert string concatenations and string literals
 TS95155: Selection is not a valid statement or statements
 TS95156: Add missing function declaration '{0}'
 TS95157: Add all missing function declarations
@@ -1795,6 +2055,30 @@ TS95170: Convert named imports to default import
 TS95171: Delete unused '@param' tag '{0}'
 TS95172: Delete all unused '@param' tags
 TS95173: Rename '@param' tag name '{0}' to '{1}'
+TS95174: Use `{0}`.
+TS95175: Use `Number.isNaN` in all conditions.
+TS95176: Convert typedef to TypeScript type.
+TS95177: Convert all typedef to TypeScript types.
+TS95178: Move to file
+TS95179: Cannot move to file, selected file is invalid
+TS95180: Use 'import type'
+TS95181: Use 'type {0}'
+TS95182: Fix all with type-only imports
+TS95183: Cannot move statements to the selected file
+TS95184: Inline variable
+TS95185: Could not find variable to inline.
+TS95186: Variables with multiple declarations cannot be inlined.
+TS95187: Add missing comma for object member completion '{0}'.
+TS95188: Add missing parameter to '{0}'
+TS95189: Add missing parameters to '{0}'
+TS95190: Add all missing parameters
+TS95191: Add optional parameter to '{0}'
+TS95192: Add optional parameters to '{0}'
+TS95193: Add all optional parameters
+TS95194: Wrap in parentheses
+TS95195: Wrap all invalid decorator expressions in parentheses
+TS95196: Add 'resolution-mode' import attribute
+TS95197: Add 'resolution-mode' import attribute to all type-only imports that need it
 TS18004: No value exists in scope for the shorthand property '{0}'. Either declare one or provide an initializer.
 TS18006: Classes may not have a field named 'constructor'.
 TS18007: JSX expressions may not use the comma operator. Did you mean to write an array?
@@ -1817,11 +2101,30 @@ TS18029: Private identifiers are not allowed in variable declarations.
 TS18030: An optional chain cannot contain private identifiers.
 TS18031: The intersection '{0}' was reduced to 'never' because property '{1}' has conflicting types in some constituents.
 TS18032: The intersection '{0}' was reduced to 'never' because property '{1}' exists in multiple constituents and is private in some.
-TS18033: Only numeric enums can have computed members, but this expression has type '{0}'. If you do not need exhaustiveness checks, consider using an object literal instead.
+TS18033: Type '{0}' is not assignable to type '{1}' as required for computed enum member values.
 TS18034: Specify the JSX fragment factory function to use when targeting 'react' JSX emit with 'jsxFactory' compiler option is specified, e.g. 'Fragment'.
 TS18035: Invalid value for 'jsxFragmentFactory'. '{0}' is not a valid identifier or qualified-name.
 TS18036: Class decorators can't be used with static private identifier. Consider removing the experimental decorator.
-TS18037: Await expression cannot be used inside a class static block.
-TS18038: 'For await' loops cannot be used inside a class static block.
+TS18037: 'await' expression cannot be used inside a class static block.
+TS18038: 'for await' loops cannot be used inside a class static block.
 TS18039: Invalid use of '{0}'. It cannot be used inside a class static block.
 TS18041: A 'return' statement cannot be used inside a class static block.
+TS18042: '{0}' is a type and cannot be imported in JavaScript files. Use '{1}' in a JSDoc type annotation.
+TS18043: Types cannot appear in export declarations in JavaScript files.
+TS18044: '{0}' is automatically exported here.
+TS18045: Properties with the 'accessor' modifier are only available when targeting ECMAScript 2015 and higher.
+TS18046: '{0}' is of type 'unknown'.
+TS18047: '{0}' is possibly 'null'.
+TS18048: '{0}' is possibly 'undefined'.
+TS18049: '{0}' is possibly 'null' or 'undefined'.
+TS18050: The value '{0}' cannot be used here.
+TS18051: Compiler option '{0}' cannot be given an empty string.
+TS18053: Its type '{0}' is not a valid JSX element type.
+TS18054: 'await using' statements cannot be used inside a class static block.
+TS18055: '{0}' has a string type, but must have syntactically recognizable string syntax when 'isolatedModules' is enabled.
+TS18056: Enum member following a non-literal numeric member must have an initializer when 'isolatedModules' is enabled.
+TS18057: String literal import and export names are not supported when the '--module' flag is set to 'es2015' or 'es2020'.
+TS18058: Default imports are not allowed in a deferred import.
+TS18059: Named imports are not allowed in a deferred import.
+TS18060: Deferred imports are only supported when the '--module' flag is set to 'esnext' or 'preserve'.
+TS18061: '{0}' is not a valid meta-property for keyword 'import'. Did you mean 'meta' or 'defer'?

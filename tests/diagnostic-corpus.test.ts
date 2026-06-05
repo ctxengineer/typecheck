@@ -1,5 +1,7 @@
 import { expect, test, describe } from "bun:test";
 import {
+  TYPESCRIPT_DIAGNOSTIC_CORPUS_SIZE,
+  TYPESCRIPT_DIAGNOSTIC_CORPUS_VERSION,
   auditDiagnosticTemplate,
   loadDiagnosticTemplates,
 } from "./utils/diagnostic-corpus.ts";
@@ -7,8 +9,8 @@ import {
 const templates = await loadDiagnosticTemplates();
 
 describe("TypeScript diagnostic corpus", () => {
-  test("loads the expected TypeScript 4.7.3 diagnostic template corpus", () => {
-    expect(templates).toHaveLength(1826);
+  test(`loads the expected TypeScript ${TYPESCRIPT_DIAGNOSTIC_CORPUS_VERSION} diagnostic template corpus`, () => {
+    expect(templates).toHaveLength(TYPESCRIPT_DIAGNOSTIC_CORPUS_SIZE);
   });
 
   test("every TypeScript diagnostic template has a handled output", () => {
