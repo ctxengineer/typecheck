@@ -2,13 +2,22 @@
 
 Token-efficient TypeScript error reporter for AI agents.
 
-Wraps `tsgo` (native TypeScript compiler) and compresses verbose error output into symbolic shorthand. Groups identical errors with counts. Designed to minimize tokens when feeding diagnostics to AI coding agents.
+Runs the `tsc` already available to the current project and compresses verbose error output into symbolic shorthand. Designed to minimize tokens when feeding diagnostics to AI coding agents.
 
 ## Usage
 
 ```bash
 bunx @ctxlyr/typecheck
 ```
+
+All arguments are passed directly to `tsc`; the wrapper appends `--noEmit --pretty false`.
+
+```bash
+bunx @ctxlyr/typecheck -p tsconfig.json
+bunx @ctxlyr/typecheck src/index.ts
+```
+
+By default, the command exits with the same status as `tsc`. Use `--exit-zero` when you want compressed diagnostics without failing the shell step.
 
 ## Output
 

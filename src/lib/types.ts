@@ -9,15 +9,3 @@ export interface TscError {
   /** Original raw line from tsc output */
   raw: string;
 }
-
-/**
- * Streaming result from running tsc
- */
-export interface TscStreamResult {
-  /** Async iterator over stdout lines */
-  lines: AsyncIterable<string>;
-  /** Promise that resolves to exit code when process completes */
-  exitCode: Promise<number>;
-  /** ReadableStream for stderr */
-  stderr: ReadableStream<Uint8Array>;
-}

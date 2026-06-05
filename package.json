@@ -3,23 +3,23 @@
   "version": "0.1.254",
   "description": "Token-efficient TypeScript error output for AI agents",
   "type": "module",
-  "main": "bin/index.js",
+  "main": "bin/filter.js",
   "bin": {
-    "typecheck": "bin/index.js"
+    "typecheck": "bin/typecheck"
   },
   "files": [
     "bin"
   ],
   "scripts": {
-    "typecheck": "node ./bin/index.js",
-    "build": "bun build ./src/typecheck.ts --outfile ./bin/index.js --target node",
+    "typecheck": "bash ./src/typecheck.sh",
+    "build": "bash ./scripts/build.sh",
     "prepublishOnly": "bun run build",
     "audit:diagnostics": "bun tests/utils/audit-diagnostics.ts",
     "test": "bun test"
   },
   "devDependencies": {
     "@types/bun": "latest",
-    "@typescript/native-preview": "^7.0.0-dev.20251219.1"
+    "typescript": "^5"
   },
   "peerDependencies": {
     "typescript": "^5"

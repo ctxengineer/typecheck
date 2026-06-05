@@ -4,6 +4,10 @@ export const tscOutputFixtures: Array<{ input: string; output: string }> = [
     output: "\n",
   },
   {
+    input: `typecheck: tsc not found. Install typescript or add tsc to PATH.`,
+    output: `typecheck: tsc not found. Install typescript or add tsc to PATH.`,
+  },
+  {
     input: `src/foo.ts(15,22): error TS2339: Property 'foo' does not exist on type 'Bar'.
 src/foo.ts(16,28): error TS2339: Property 'foo' does not exist on type 'Bar'.
 src/baz.ts(8,15): error TS2339: Property 'bar' does not exist on type 'Baz'.
