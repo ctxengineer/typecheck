@@ -15,16 +15,15 @@ bunx @ctxlyr/typecheck
 **Passing:**
 
 ```
-<typecheck:passing />
+
 ```
 
 **Errors:**
 
-```xml
-<typecheck:summary>
-  - TS2339:'foo'@'Bar' (x2)
-  - TS2339:'baz'@'Qux'
-</typecheck:summary>
+```
+src/foo.ts(15,22):TS2339:'foo'@'Bar'
+src/foo.ts(16,28):TS2339:'foo'@'Bar'
+src/baz.ts(8,15):TS2339:'baz'@'Qux'
 ```
 
 ## Before/After
@@ -39,11 +38,10 @@ src/baz.ts(8,15): error TS2339: Property 'baz' does not exist on type 'Qux'.
 
 **Compressed output:**
 
-```xml
-<typecheck:summary>
-  - TS2339:'foo'@'Bar' (x2)
-  - TS2339:'baz'@'Qux'
-</typecheck:summary>
+```
+src/foo.ts(15,22):TS2339:'foo'@'Bar'
+src/foo.ts(16,28):TS2339:'foo'@'Bar'
+src/baz.ts(8,15):TS2339:'baz'@'Qux'
 ```
 
 ## License

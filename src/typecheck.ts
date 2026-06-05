@@ -1,9 +1,8 @@
 #!/usr/bin/env node
 
 import { parseLine } from "./lib/parser.ts";
-import { formatError, formatSummary } from "./lib/formatter.ts";
+import { formatError } from "./lib/formatter.ts";
 import { runTscStream } from "./lib/tsc-runner.ts";
-import { PREFIX_OPEN } from "./lib/constant.ts";
 
 const HELP_TEXT = `
 typecheck - Token-efficient TypeScript error output for AI agents
@@ -28,9 +27,6 @@ Output format:
   Each error is shown with location and compressed message.
 `.trim();
 
-const SUMMARY_MULTI_FILES = /^Found (\d+) errors? in (\d+) files?\.$/;
-const SUMMARY_SAME_FILE = /^Found (\d+) errors? in the same file/;
-
 async function main(): Promise<number> {
   const args = process.argv.slice(2);
 
@@ -43,39 +39,19 @@ async function main(): Promise<number> {
   const tscArgs = useTsgo ? args.filter((arg) => arg !== "--tsgo") : args;
 
   const result = runTscStream(tscArgs, useTsgo);
-  let hasErrors = false;
-  let errorCount: number | undefined;
-  let fileCount: number | undefined;
+  let emittedDiagnostics = false;
 
   try {
     for await (const line of result.lines) {
       const error = parseLine(line);
       if (error) {
-        if (!hasErrors) {
-          console.log(PREFIX_OPEN);
-          hasErrors = true;
-        }
+        emittedDiagnostics = true;
         console.log(formatError(error));
-        continue;
-      }
-
-      // Check for summary line
-      const multiMatch = line.match(SUMMARY_MULTI_FILES);
-      if (multiMatch) {
-        errorCount = parseInt(multiMatch[1]!, 10);
-        fileCount = parseInt(multiMatch[2]!, 10);
-        continue;
-      }
-
-      const sameMatch = line.match(SUMMARY_SAME_FILE);
-      if (sameMatch) {
-        errorCount = parseInt(sameMatch[1]!, 10);
-        fileCount = 1;
       }
     }
   } catch {
     // Ignore stream errors
-    return 1
+    return 1;
   }
 
   // Handle stderr (only show lines containing "error")
@@ -86,12 +62,16 @@ async function main(): Promise<number> {
     .join("\n")
     .trim();
   if (filteredStderr) {
+    emittedDiagnostics = true;
     console.error(filteredStderr);
   }
 
-  console.log(formatSummary(hasErrors, errorCount, fileCount));
+  if (!emittedDiagnostics) {
+    console.log();
+  }
 
-  return await result.exitCode;
+  await result.exitCode;
+  return 0;
 }
 
 main().then((exitCode) => {
