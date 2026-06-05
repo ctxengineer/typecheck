@@ -1,8 +1,11 @@
 {
   "name": "typecheck",
-  "module": "index.ts",
+  "module": "src/typecheck.ts",
   "type": "module",
   "private": true,
+  "bin": {
+    "typecheck": "./src/typecheck.ts"
+  },
   "devDependencies": {
     "@types/bun": "latest"
   },
