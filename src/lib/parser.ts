@@ -1,4 +1,5 @@
 import type { TscError } from "./types.ts";
+import { truncateType } from "./truncate.ts";
 
 /**
  * Regex to match TSC error lines
@@ -8,13 +9,6 @@ import type { TscError } from "./types.ts";
  *   C:\project\src\file.ts(10,5): error TS7006: Parameter 'x' implicitly has...
  */
 const ERROR_LINE_PATTERN = /^[^:]+\([^)]+\): error /;
-
-/**
- * Regex to match complex object type definitions that should be truncated
- * Matches: '{ anything with semicolons; }'
- * Example: '{ fndByCategory: () => Promise<ResultItem[]>; }' -> '{ ... }'
- */
-const COMPLEX_TYPE_PATTERN = /'\{ [^}]*; \}'/g;
 
 /**
  * Parse a line of TSC output into a structured error object
@@ -41,8 +35,8 @@ export function parseLine(line: string): TscError | null {
   // Skip "): error " (9 chars) to get just "TS2339: ..."
   let message = line.substring(separatorIndex + 9);
 
-  // Normalize complex type definitions
-  message = message.replace(COMPLEX_TYPE_PATTERN, "'{ ... }'");
+  // Truncate complex type definitions
+  message = truncateType(message);
 
   return {
     location,
