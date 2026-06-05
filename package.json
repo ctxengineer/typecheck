@@ -34,7 +34,6 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ctxlyr/typecheck.git",
-    "directory": "packages/typecheck"
+    "url": "https://github.com/ctxlyr/typecheck.git"
   }
 }
