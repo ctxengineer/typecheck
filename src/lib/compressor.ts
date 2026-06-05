@@ -7,6 +7,7 @@
  * Pattern to extract TS error code
  */
 const TS_CODE_PATTERN = /^(TS\d+):/;
+const QUOTED_TEXT_PATTERN = /(?<![A-Za-z])'[^']+'(?![A-Za-z])/g;
 
 /**
  * Noise words to filter from quoted strings
@@ -28,10 +29,14 @@ export function compressMessage(message: string): string {
   const body = message.slice(codeMatch[0]!.length).trim();
 
   // Extract all quoted strings once
-  const quoted = message.match(/'[^']+'/g);
+  const quoted = message.match(QUOTED_TEXT_PATTERN);
 
   // Pattern: "Did you mean 'X'?" -> 'A'@'B'?'X'
-  if (quoted?.length === 3 && body.includes("Did you mean '")) {
+  if (
+    quoted?.length === 3 &&
+    body.includes(" does not exist on type ") &&
+    body.includes("Did you mean '")
+  ) {
     return `${code}:${quoted[0]!}@${quoted[1]!}?${quoted[2]!}`;
   }
 
@@ -65,8 +70,7 @@ export function compressMessage(message: string): string {
     firstClearQuoted &&
     (body.startsWith("Cannot find name ") ||
       body.startsWith("Cannot find module ") ||
-      body.startsWith("Parameter ") ||
-      body.startsWith("Binding element ") ||
+      body.includes(" implicitly has an 'any' type") ||
       body.includes(" is possibly ") ||
       body.includes(" is used before being assigned"))
   ) {

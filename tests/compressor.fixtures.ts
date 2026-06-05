@@ -16,8 +16,23 @@ export const compressorFixtures: Array<{ input: string; output: string }> = [
   },
   {
     input:
+      "TS2418: Type of computed property's value is 'Foo', which is not assignable to type 'Bar'.",
+    output: "TS2418:'Foo'~'Bar'",
+  },
+  {
+    input: "TS1227: Parameter '{0}' is not in the same position as parameter '{1}'.",
+    output: "TS1227:Parameter '{0}' is not in the same position as parameter '{1}'.",
+  },
+  {
+    input:
       "TS2551: Property 'fo' does not exist on type 'Bar'. Did you mean 'foo'?",
     output: "TS2551:'fo'@'Bar'?'foo'",
+  },
+  {
+    input:
+      "TS1340: Module '{0}' does not refer to a type, but is used as a type here. Did you mean 'typeof import('{0}')'?",
+    output:
+      "TS1340:Module '{0}' does not refer to a type, but is used as a type here. Did you mean 'typeof import('{0}')'?",
   },
   { input: "TS2554: Expected 2 arguments, but got 3.", output: "TS2554:2!=3" },
   { input: "TS2554: Expected 1 argument, but got 0.", output: "TS2554:1!=0" },

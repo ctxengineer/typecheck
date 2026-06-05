@@ -14,6 +14,7 @@
     "typecheck": "node ./bin/index.js",
     "build": "bun build ./src/typecheck.ts --outfile ./bin/index.js --target node",
     "prepublishOnly": "bun run build",
+    "audit:diagnostics": "bun tests/utils/audit-diagnostics.ts",
     "test": "bun test"
   },
   "devDependencies": {
