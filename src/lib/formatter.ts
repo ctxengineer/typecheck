@@ -1,27 +1,31 @@
-import type { ErrorGroup } from "./types.ts";
+import type { TscError } from "./types.ts";
 import { compressMessage } from "./compressor.ts";
+import { PREFIX_CLOSE, PREFIX_SELF_CLOSE } from "./constant.ts";
 
-function formatLocation(location: string): string {
-  return `[${location.replace("(", ":").replace(",", ":").replace(")", "")}]`;
+/**
+ * Format a single error for immediate output
+ */
+export function formatError(error: TscError): string {
+  return `${error.location}:${compressMessage(error.message)}`;
 }
 
 /**
- * Format all error groups for console output
- * One line per unique error message, compressed to symbolic shorthand
- * @param groups Array of error groups to format
- * @returns Formatted string ready for console output
+ * Format summary footer
  */
-export function formatGroups(groups: ErrorGroup[]): string {
-  if (groups.length === 0) {
-    return "<typecheck:passing />";
+export function formatSummary(
+  hasErrors: boolean,
+  errorCount?: number,
+  fileCount?: number
+): string {
+  if (!hasErrors) {
+    return `${PREFIX_SELF_CLOSE} ✓ typecheck`;
   }
 
-  const items = groups
-    .map((group) => {
-      const compressed = compressMessage(group.message);
-      const countSuffix = group.count > 1 ? ` (x${group.count})` : "";
-      return `  - ${compressed}${countSuffix} ${formatLocation(group.exampleLocation)}`;
-    })
-    .join("\n");
-  return `<typecheck:summary>\n${items}\n</typecheck:summary>`;
+  if (errorCount === undefined || fileCount === undefined) {
+    return `${PREFIX_CLOSE} ✗ typecheck`;
+  }
+
+  const errorWord = errorCount === 1 ? "error" : "errors";
+  const fileWord = fileCount === 1 ? "file" : "files";
+  return `${PREFIX_CLOSE} ✗ typecheck: ${errorCount} ${errorWord}, ${fileCount} ${fileWord}`;
 }

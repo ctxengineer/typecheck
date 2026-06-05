@@ -45,11 +45,3 @@ export function parseLine(line: string): TscError | null {
   };
 }
 
-/**
- * Parse multiple lines of TSC output
- * @param lines Array of lines from tsc stdout
- * @returns Array of parsed errors (non-error lines are filtered out)
- */
-export function parseLines(lines: string[]): TscError[] {
-  return lines.map(parseLine).filter((e): e is TscError => e !== null);
-}

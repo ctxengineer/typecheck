@@ -14,6 +14,24 @@ const TS_CODE_PATTERN = /^(TS\d+):/;
 const NOISE_WORDS = new Set(["'any'", "'undefined'", "'null'", "'async'"]);
 
 /**
+ * Maximum length for quoted string content (excluding quotes)
+ */
+const MAX_QUOTED_LENGTH = 30;
+
+/**
+ * Truncate a quoted string if content exceeds MAX_QUOTED_LENGTH.
+ * @param quoted The quoted string (e.g., "'SomeLongTypeName'")
+ * @returns Truncated form with ellipsis if needed (e.g., "'SomeLongTypeNa...'")
+ */
+function truncateQuoted(quoted: string): string {
+  const content = quoted.slice(1, -1);
+  if (content.length <= MAX_QUOTED_LENGTH) {
+    return quoted;
+  }
+  return `'${content.slice(0, MAX_QUOTED_LENGTH)}...'`;
+}
+
+/**
  * Compress a TypeScript error message to symbolic shorthand.
  * Uses pattern-based detection rather than per-error-code rules.
  *
@@ -27,20 +45,17 @@ export function compressMessage(message: string): string {
   const code = codeMatch[1]!;
   const body = message.slice(codeMatch[0]!.length).trim();
 
+  // Extract all quoted strings once
+  const quoted = message.match(/'[^']+'/g);
+
   // Pattern: "Did you mean 'X'?" -> 'A'@'B'?'X'
-  if (body.includes("Did you mean")) {
-    const quoted = message.match(/'[^']+'/g);
-    if (quoted?.length === 3) {
-      return `${code}:${quoted[0]!}@${quoted[1]!}?${quoted[2]!}`;
-    }
+  if (quoted?.length === 3 && body.includes("Did you mean")) {
+    return `${code}:${truncateQuoted(quoted[0]!)}@${truncateQuoted(quoted[1]!)}?${truncateQuoted(quoted[2]!)}`;
   }
 
   // Pattern: "on type 'X'" -> 'A'@'X'
-  if (body.includes(" on type ")) {
-    const quoted = message.match(/'[^']+'/g);
-    if (quoted?.length === 2) {
-      return `${code}:${quoted[0]!}@${quoted[1]!}`;
-    }
+  if (quoted?.length === 2 && body.includes(" on type ")) {
+    return `${code}:${truncateQuoted(quoted[0]!)}@${truncateQuoted(quoted[1]!)}`;
   }
 
   // Pattern: "Expected N argument(s), but got M" -> N!=M
@@ -49,11 +64,13 @@ export function compressMessage(message: string): string {
     return `${code}:${argMatch[1]!}!=${argMatch[2]!}`;
   }
 
-  // Default: extract all quoted strings, filter noise, join with ~
-  const allQuoted = message.match(/'[^']+'/g);
-  const quoted: string[] = allQuoted ? allQuoted.filter((q) => !NOISE_WORDS.has(q)) : [];
-  if (quoted.length) {
-    return `${code}:${quoted.join('~')}`;
+  // Default: filter noise, truncate, join with ~
+  if (quoted) {
+    const filtered = quoted.filter((q) => !NOISE_WORDS.has(q)).map(truncateQuoted);
+    if (filtered.length) {
+      return `${code}:${filtered.join('~')}`;
+    }
   }
+
   return code;
 }

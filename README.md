@@ -15,9 +15,7 @@ bunx @ctxlyr/typecheck
 **Passing:**
 
 ```
-
 <typecheck:passing />
-
 ```
 
 **Errors:**
@@ -47,3 +45,11 @@ src/baz.ts(8,15): error TS2339: Property 'baz' does not exist on type 'Qux'.
   - TS2339:'baz'@'Qux'
 </typecheck:summary>
 ```
+
+## Documentation
+
+See the [monorepo docs](../../docs) for more details on the compression format and usage examples.
+
+## License
+
+MIT

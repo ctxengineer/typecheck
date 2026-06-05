@@ -4,32 +4,20 @@
 export interface TscError {
   /** File location, e.g., "src/user.ts(15,22)" */
   location: string;
-  /** Error message, e.g., "error TS2339: Property 'name' does not exist..." */
+  /** Error message, e.g., "TS2339: Property 'name' does not exist..." */
   message: string;
   /** Original raw line from tsc output */
   raw: string;
 }
 
 /**
- * Represents a group of identical errors
+ * Streaming result from running tsc
  */
-export interface ErrorGroup {
-  /** The normalized error message (used as grouping key) */
-  message: string;
-  /** Number of occurrences of this error */
-  count: number;
-  /** Example file location (first occurrence) */
-  exampleLocation: string;
-}
-
-/**
- * Result from running the tsc process
- */
-export interface TscResult {
-  /** All stdout lines from tsc */
-  lines: string[];
-  /** Process exit code */
-  exitCode: number;
-  /** Any stderr output */
-  stderr: string;
+export interface TscStreamResult {
+  /** Async iterator over stdout lines */
+  lines: AsyncIterable<string>;
+  /** Promise that resolves to exit code when process completes */
+  exitCode: Promise<number>;
+  /** ReadableStream for stderr */
+  stderr: ReadableStream<Uint8Array>;
 }

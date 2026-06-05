@@ -1,6 +1,6 @@
 {
   "name": "@ctxlyr/typecheck",
-  "version": "0.1.20",
+  "version": "0.1.254",
   "description": "Token-efficient TypeScript error output for AI agents",
   "type": "module",
   "main": "bin/index.js",
@@ -11,12 +11,14 @@
     "bin"
   ],
   "scripts": {
-    "typecheck": "bun ./bin/index.js",
-    "build": "bun build ./src/typecheck.ts --outfile ./bin/index.js --target bun",
-    "prepublishOnly": "bun run build"
+    "typecheck": "node ./bin/index.js",
+    "build": "bun build ./src/typecheck.ts --outfile ./bin/index.js --target node",
+    "prepublishOnly": "bun run build",
+    "test": "bun test"
   },
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "@typescript/native-preview": "^7.0.0-dev.20251219.1"
   },
   "peerDependencies": {
     "typescript": "^5"
@@ -29,5 +31,10 @@
     "agent",
     "context"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ctxlyr/typecheck.git",
+    "directory": "packages/typecheck"
+  }
 }
