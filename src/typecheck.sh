@@ -14,7 +14,18 @@ The wrapper appends --noEmit --pretty false for clean, parseable output.
 It resolves tsc from the nearest node_modules/.bin/tsc on or above the current
 directory, then falls back to PATH.'
 
-script_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+source_path="${BASH_SOURCE[0]}"
+while [[ -L "$source_path" ]]; do
+  source_dir="$(cd -- "$(dirname -- "$source_path")" && pwd)"
+  link_target="$(readlink "$source_path")"
+  if [[ "$link_target" == /* ]]; then
+    source_path="$link_target"
+  else
+    source_path="$source_dir/$link_target"
+  fi
+done
+
+script_dir="$(cd -- "$(dirname -- "$source_path")" && pwd)"
 filter_path="$script_dir/filter.js"
 filter_cmd=(node "$filter_path")
 
