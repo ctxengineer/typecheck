@@ -2,7 +2,7 @@
   "lockfileVersion": 1,
   "workspaces": {
     "": {
-      "name": "typecheck",
+      "name": "@ctxlyr/typecheck",
       "devDependencies": {
         "@types/bun": "latest",
       },

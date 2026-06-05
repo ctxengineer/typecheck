@@ -1,6 +1,10 @@
 import type { ErrorGroup } from "./types.ts";
 import { compressMessage } from "./compressor.ts";
 
+function formatLocation(location: string): string {
+  return `[${location.replace("(", ":").replace(",", ":").replace(")", "")}]`;
+}
+
 /**
  * Format all error groups for console output
  * One line per unique error message, compressed to symbolic shorthand
@@ -16,7 +20,7 @@ export function formatGroups(groups: ErrorGroup[]): string {
     .map((group) => {
       const compressed = compressMessage(group.message);
       const countSuffix = group.count > 1 ? ` (x${group.count})` : "";
-      return `  - ${compressed}${countSuffix}`;
+      return `  - ${compressed}${countSuffix} ${formatLocation(group.exampleLocation)}`;
     })
     .join("\n");
   return `<typecheck:summary>\n${items}\n</typecheck:summary>`;

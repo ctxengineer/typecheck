@@ -1,4 +1,4 @@
-#!/usr/bin/env bun
+#!/usr/bin/env node
 
 import { parseLines } from "./lib/parser.ts";
 import { groupErrors } from "./lib/grouper.ts";
@@ -11,6 +11,7 @@ typecheck - Token-efficient TypeScript error output for AI agents
 Usage: typecheck [options] [tsc-args...]
 
 Options:
+  --tsgo    Use tsgo (native TypeScript) instead of tsc
   --help    Show this help message
 
 All other arguments are passed directly to tsc.
@@ -34,8 +35,12 @@ async function main(): Promise<number> {
     return 0;
   }
 
+  // Handle --tsgo flag
+  const useTsgo = args.includes("--tsgo");
+  const tscArgs = args.filter((arg) => arg !== "--tsgo");
+
   // Run tsc with provided arguments
-  const result = await runTsc(args);
+  const result = await runTsc(tscArgs, useTsgo);
 
   // Output any stderr (tsc warnings, config errors, etc.)
   if (result.stderr) {

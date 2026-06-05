@@ -1,15 +1,32 @@
 {
-  "name": "typecheck",
-  "module": "src/typecheck.ts",
+  "name": "@ctxlyr/typecheck",
+  "version": "0.1.13",
+  "description": "Token-efficient TypeScript error output for AI agents",
   "type": "module",
-  "private": true,
   "bin": {
-    "typecheck": "./src/typecheck.ts"
+    "typecheck": "bin/typecheck.js"
+  },
+  "files": [
+    "bin"
+  ],
+  "scripts": {
+    "typecheck": "node ./bin/typecheck.js",
+    "build": "bun build ./src/typecheck.ts --outdir ./bin --target node",
+    "prepublishOnly": "bun run build"
   },
   "devDependencies": {
     "@types/bun": "latest"
   },
   "peerDependencies": {
     "typescript": "^5"
-  }
+  },
+  "keywords": [
+    "typescript",
+    "tsc",
+    "typecheck",
+    "ai",
+    "agent",
+    "context"
+  ],
+  "license": "MIT"
 }
