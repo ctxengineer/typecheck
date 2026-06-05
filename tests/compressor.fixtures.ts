@@ -41,13 +41,26 @@ export const compressorFixtures: Array<{ input: string; output: string }> = [
   { input: "TS18048: 'foo' is possibly 'undefined'.", output: "TS18048:'foo'" },
   {
     input: "TS2532: Object is possibly 'undefined'.",
-    output: "TS2532",
+    output: "TS2532:Object is possibly 'undefined'.",
   },
   { input: "TS2565: Property 'foo' is used before being assigned.", output: "TS2565:'foo'" },
   {
     input: "TS1356: Did you mean to mark this function as 'async'?",
-    output: "TS1356",
+    output: "TS1356:Did you mean to mark this function as 'async'?",
   },
-  { input: "TS9999: Some 'unknown' error 'message' here.", output: "TS9999:'unknown'~'message'" },
+  {
+    input: "TS18003: No inputs were found in config file.",
+    output: "TS18003:No inputs were found in config file.",
+  },
+  {
+    input: "TS9999: Some 'unknown' error 'message' here.",
+    output: "TS9999:Some 'unknown' error 'message' here.",
+  },
+  {
+    input:
+      `TS18003: No inputs were found in config file '/tmp/tsconfig.json'. Specified 'include' paths were '["**/*"]' and 'exclude' paths were '[]'.`,
+    output:
+      `TS18003:No inputs were found in config file '/tmp/tsconfig.json'. Specified 'include' paths were '["**/*"]' and 'exclude' paths were '[]'.`,
+  },
   { input: "Some random message", output: "Some random message" },
 ];

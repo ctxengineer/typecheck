@@ -37,6 +37,14 @@ Found 1 error in 1 file.`,
   },
   {
     input: `src/typecheck.ts(74,5): error TS2552: Cannot find name 'onsole'. Did you mean 'console'?`,
-    output: `src/typecheck.ts(74,5):TS2552:'onsole'~'console'`,
+    output: `src/typecheck.ts(74,5):TS2552:'onsole'?'console'`,
+  },
+  {
+    input: `error TS18003: No inputs were found in config file.`,
+    output: `TS18003:No inputs were found in config file.`,
+  },
+  {
+    input: `C:\\project\\src\\file.ts(10,5): error TS7006: Parameter 'x' implicitly has an 'any' type.`,
+    output: `C:\\project\\src\\file.ts(10,5):TS7006:'x'`,
   },
 ];

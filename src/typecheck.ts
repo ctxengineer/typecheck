@@ -56,14 +56,14 @@ async function main(): Promise<number> {
 
   // Handle stderr (only show lines containing "error")
   const stderrText = await new Response(result.stderr).text();
-  const filteredStderr = stderrText
+  const stderrLines = stderrText
     .split("\n")
-    .filter((line) => /error/i.test(line))
-    .join("\n")
-    .trim();
-  if (filteredStderr) {
+    .map((line) => line.trim())
+    .filter((line) => /error/i.test(line));
+  for (const line of stderrLines) {
+    const error = parseLine(line);
     emittedDiagnostics = true;
-    console.error(filteredStderr);
+    console.error(error ? formatError(error) : line);
   }
 
   if (!emittedDiagnostics) {

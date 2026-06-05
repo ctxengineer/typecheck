@@ -6,8 +6,10 @@ import type { TscError } from "./types.ts";
  * Examples:
  *   src/user.ts(15,22): error TS2339: Property 'name' does not exist...
  *   C:\project\src\file.ts(10,5): error TS7006: Parameter 'x' implicitly has...
+ *   error TS18003: No inputs were found in config file...
  */
-const ERROR_LINE_PATTERN = /^[^:]+\([^)]+\): error /;
+const ERROR_WITH_LOCATION_PATTERN = /^(.+\([^)]+\)): error (TS\d+: .*)$/;
+const ERROR_WITHOUT_LOCATION_PATTERN = /^error (TS\d+: .*)$/;
 
 /**
  * Parse a line of TSC output into a structured error object
@@ -15,28 +17,22 @@ const ERROR_LINE_PATTERN = /^[^:]+\([^)]+\): error /;
  * @returns TscError if line is an error, null otherwise
  */
 export function parseLine(line: string): TscError | null {
-  // Check if this line matches the error pattern
-  if (!ERROR_LINE_PATTERN.test(line)) {
-    return null;
+  const locationMatch = line.match(ERROR_WITH_LOCATION_PATTERN);
+  if (locationMatch) {
+    return {
+      location: locationMatch[1]!,
+      message: locationMatch[2]!,
+      raw: line,
+    };
   }
 
-  // Find the position of "): " separator
-  const separatorIndex = line.indexOf("): ");
-  if (separatorIndex === -1) {
-    return null;
+  const noLocationMatch = line.match(ERROR_WITHOUT_LOCATION_PATTERN);
+  if (noLocationMatch) {
+    return {
+      message: noLocationMatch[1]!,
+      raw: line,
+    };
   }
 
-  // Extract location (everything up to and including ")")
-  // AWK: location = substr($0, 1, paren_colon_pos)
-  const location = line.substring(0, separatorIndex + 1);
-
-  // Extract message (everything after "): error ")
-  // Skip "): error " (9 chars) to get just "TS2339: ..."
-  let message = line.substring(separatorIndex + 9);
-
-  return {
-    location,
-    message,
-    raw: line,
-  };
+  return null;
 }

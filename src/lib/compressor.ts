@@ -31,13 +31,27 @@ export function compressMessage(message: string): string {
   const quoted = message.match(/'[^']+'/g);
 
   // Pattern: "Did you mean 'X'?" -> 'A'@'B'?'X'
-  if (quoted?.length === 3 && body.includes("Did you mean")) {
+  if (quoted?.length === 3 && body.includes("Did you mean '")) {
     return `${code}:${quoted[0]!}@${quoted[1]!}?${quoted[2]!}`;
+  }
+
+  // Pattern: "Cannot find name 'A'. Did you mean 'B'?" -> 'A'?'B'
+  if (quoted?.length === 2 && body.includes("Did you mean '")) {
+    return `${code}:${quoted[0]!}?${quoted[1]!}`;
   }
 
   // Pattern: "on type 'X'" -> 'A'@'X'
   if (quoted?.length === 2 && body.includes(" on type ")) {
     return `${code}:${quoted[0]!}@${quoted[1]!}`;
+  }
+
+  // Pattern: assignability or compatibility between two named types
+  if (
+    quoted?.length === 2 &&
+    (body.includes(" is not assignable to ") ||
+      body.includes(" has no properties in common with type "))
+  ) {
+    return `${code}:${quoted[0]!}~${quoted[1]!}`;
   }
 
   // Pattern: "Expected N argument(s), but got M" -> N!=M
@@ -46,13 +60,18 @@ export function compressMessage(message: string): string {
     return `${code}:${argMatch[1]!}!=${argMatch[2]!}`;
   }
 
-  // Default: filter noise and join with ~
-  if (quoted) {
-    const filtered = quoted.filter((q) => !NOISE_WORDS.has(q));
-    if (filtered.length) {
-      return `${code}:${filtered.join('~')}`;
-    }
+  const firstClearQuoted = quoted?.find((q) => !NOISE_WORDS.has(q));
+  if (
+    firstClearQuoted &&
+    (body.startsWith("Cannot find name ") ||
+      body.startsWith("Cannot find module ") ||
+      body.startsWith("Parameter ") ||
+      body.startsWith("Binding element ") ||
+      body.includes(" is possibly ") ||
+      body.includes(" is used before being assigned"))
+  ) {
+    return `${code}:${firstClearQuoted}`;
   }
 
-  return code;
+  return `${code}:${body}`;
 }
