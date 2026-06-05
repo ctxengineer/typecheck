@@ -1,5 +1,4 @@
 import type { TscError } from "./types.ts";
-import { truncateType } from "./truncate.ts";
 
 /**
  * Regex to match TSC error lines
@@ -35,13 +34,9 @@ export function parseLine(line: string): TscError | null {
   // Skip "): error " (9 chars) to get just "TS2339: ..."
   let message = line.substring(separatorIndex + 9);
 
-  // Truncate complex type definitions
-  message = truncateType(message);
-
   return {
     location,
     message,
     raw: line,
   };
 }
-

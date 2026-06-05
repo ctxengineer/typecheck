@@ -14,24 +14,6 @@ const TS_CODE_PATTERN = /^(TS\d+):/;
 const NOISE_WORDS = new Set(["'any'", "'undefined'", "'null'", "'async'"]);
 
 /**
- * Maximum length for quoted string content (excluding quotes)
- */
-const MAX_QUOTED_LENGTH = 30;
-
-/**
- * Truncate a quoted string if content exceeds MAX_QUOTED_LENGTH.
- * @param quoted The quoted string (e.g., "'SomeLongTypeName'")
- * @returns Truncated form with ellipsis if needed (e.g., "'SomeLongTypeNa...'")
- */
-function truncateQuoted(quoted: string): string {
-  const content = quoted.slice(1, -1);
-  if (content.length <= MAX_QUOTED_LENGTH) {
-    return quoted;
-  }
-  return `'${content.slice(0, MAX_QUOTED_LENGTH)}...'`;
-}
-
-/**
  * Compress a TypeScript error message to symbolic shorthand.
  * Uses pattern-based detection rather than per-error-code rules.
  *
@@ -50,12 +32,12 @@ export function compressMessage(message: string): string {
 
   // Pattern: "Did you mean 'X'?" -> 'A'@'B'?'X'
   if (quoted?.length === 3 && body.includes("Did you mean")) {
-    return `${code}:${truncateQuoted(quoted[0]!)}@${truncateQuoted(quoted[1]!)}?${truncateQuoted(quoted[2]!)}`;
+    return `${code}:${quoted[0]!}@${quoted[1]!}?${quoted[2]!}`;
   }
 
   // Pattern: "on type 'X'" -> 'A'@'X'
   if (quoted?.length === 2 && body.includes(" on type ")) {
-    return `${code}:${truncateQuoted(quoted[0]!)}@${truncateQuoted(quoted[1]!)}`;
+    return `${code}:${quoted[0]!}@${quoted[1]!}`;
   }
 
   // Pattern: "Expected N argument(s), but got M" -> N!=M
@@ -64,9 +46,9 @@ export function compressMessage(message: string): string {
     return `${code}:${argMatch[1]!}!=${argMatch[2]!}`;
   }
 
-  // Default: filter noise, truncate, join with ~
+  // Default: filter noise and join with ~
   if (quoted) {
-    const filtered = quoted.filter((q) => !NOISE_WORDS.has(q)).map(truncateQuoted);
+    const filtered = quoted.filter((q) => !NOISE_WORDS.has(q));
     if (filtered.length) {
       return `${code}:${filtered.join('~')}`;
     }

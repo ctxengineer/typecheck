@@ -29,7 +29,11 @@ src/foo.tsx(11,32):TS7006:'bar'`,
     input: `src/api.ts(42,15): error TS2339: Property 'getUserProfileWithSettings' does not exist on type 'VeryLongTypeNameThatExceedsThirtyCharacters'.
 
 Found 1 error in 1 file.`,
-    output: `src/api.ts(42,15):TS2339:'getUserProfileWithSettings'@'VeryLongTypeNameThatExceedsThi...'`,
+    output: `src/api.ts(42,15):TS2339:'getUserProfileWithSettings'@'VeryLongTypeNameThatExceedsThirtyCharacters'`,
+  },
+  {
+    input: `src/object.ts(3,9): error TS2339: Property 'missing' does not exist on type '{ short: number; longerKey: string; x: boolean; }'.`,
+    output: `src/object.ts(3,9):TS2339:'missing'@'{ short: number; longerKey: string; x: boolean; }'`,
   },
   {
     input: `src/typecheck.ts(74,5): error TS2552: Cannot find name 'onsole'. Did you mean 'console'?`,

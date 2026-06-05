@@ -5,9 +5,6 @@
         location = substr($0, 1, paren_colon_pos)
         message = substr($0, paren_colon_pos + 3)
 
-        # Truncate long object type definitions to '{ ... }'
-        gsub(/'\{ [^}]*; \}'/, "'{ ... }'", message)
-
         if (!(message in count)) {
             count[message] = 0
             example[message] = location
