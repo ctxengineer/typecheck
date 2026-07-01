@@ -1,9 +1,13 @@
 {
   "name": "@ctxlyr/typecheck",
-  "version": "0.1.254",
+  "version": "0.2.0",
   "description": "Token-efficient TypeScript error output for AI agents",
   "type": "module",
   "main": "bin/filter.js",
+  "homepage": "https://github.com/ctxengineer/typecheck#readme",
+  "bugs": {
+    "url": "https://github.com/ctxengineer/typecheck/issues"
+  },
   "bin": {
     "typecheck": "bin/typecheck"
   },
@@ -33,8 +37,11 @@
     "context"
   ],
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ctxlyr/typecheck.git"
+    "url": "git+https://github.com/ctxengineer/typecheck.git"
   }
 }
